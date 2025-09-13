@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurioMap - Unusual Wikipedia Articles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .app-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .sidebar {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .sidebar-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .sidebar-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar-content {
+            padding: 20px;
+        }
+        
+        .country-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(79, 172, 254, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+        
+        .country-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .country-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .article-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .article-description {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        
+        .article-extract {
+            color: #888;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4facfe;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .article-link:hover {
+            color: #00f2fe;
+        }
+        
+        .map-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .toggle-sidebar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-sidebar:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .stats {
+            padding: 15px 20px;
+            background: rgba(79, 172, 254, 0.1);
+            border-top: 1px solid rgba(79, 172, 254, 0.2);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .popup-content {
+            max-width: 250px;
+        }
+        
+        .popup-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .popup-description {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .popup-link {
+            display: inline-block;
+            color: #4facfe;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        .popup-link:hover {
+            color: #00f2fe;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: absolute;
+                height: 100%;
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .toggle-sidebar {
+                top: 10px;
+                left: 10px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>🗺️ CurioMap</h1>
+                <p>Unusual Wikipedia Articles Around the World</p>
+            </div>
+            <div class="sidebar-content">
+                <div id="sidebar-body">
+                    <div class="loading">
+                        <p>Click on a country to explore unusual articles...</p>
+                    </div>
+                </div>
+                <div class="stats" id="stats">
+                    Ready to explore! 🚀
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <button class="toggle-sidebar" id="toggleSidebar">
+                🗺️
+            </button>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script>
+        // Sample data - replace with your actual data
+        const sampleData = {
+            "United Kingdom": [
+                {
+                    "id": "uk_boring_oregon",
+                    "title": "Boring, Oregon",
+                    "description": "Unincorporated community in Oregon",
+                    "extract": "Boring is an unincorporated community in Clackamas County, Oregon, United States. It is located along Oregon Route 212...",
+                    "url": "https://en.wikipedia.org/wiki/Boring,_Oregon",
+                    "thumbnail": null,
+                    "source_region": "North America"
+                },
+                {
+                    "id": "uk_hell_norway",
+                    "title": "Hell, Norway",
+                    "description": "Village in Norway",
+                    "extract": "Hell is a village in the Lånke area of the municipality of Stjørdal in Trøndelag county, Norway...",
+                    "url": "https://en.wikipedia.org/wiki/Hell,_Norway",
+                    "thumbnail": null,
+                    "source_region": "Europe"
+                }
+            ],
+            "Japan": [
+                {
+                    "id": "japan_cat_cafe",
+                    "title": "Cat café",
+                    "description": "Theme café where patrons can interact with cats",
+                    "extract": "A cat café is a theme café whose attraction is cats who can be watched and played with. Patrons pay a cover fee...",
+                    "url": "https://en.wikipedia.org/wiki/Cat_caf%C3%A9",
+                    "thumbnail": null,
+                    "source_region": "Asia"
+                }
+            ],
+            "United States": [
+                {
+                    "id": "us_gravity_hill",
+                    "title": "Gravity hill",
+                    "description": "Places where the layout creates an optical illusion",
+                    "extract": "A gravity hill, also known as a magnetic hill, mystery hill, mystery spot, gravity road, or anti-gravity hill...",
+                    "url": "https://en.wikipedia.org/wiki/Gravity_hill",
+                    "thumbnail": null,
+                    "source_region": "North America"
+                }
+            ],
+            "Australia": [
+                {
+                    "id": "au_drop_bear",
+                    "title": "Drop bear",
+                    "description": "Fictitious Australian marsupial",
+                    "extract": "A drop bear is a fictitious Australian marsupial. Drop bears are commonly said to be unusually large...",
+                    "url": "https://en.wikipedia.org/wiki/Drop_bear",
+                    "thumbnail": null,
+                    "source_region": "Oceania"
+                }
+            ]
+        };
+
+        // Country coordinates for map markers
+        const countryCoordinates = {
+            "United Kingdom": [55.3781, -3.4360],
+            "Japan": [36.2048, 138.2529],
+            "United States": [39.8283, -98.5795],
+            "Australia": [-25.2744, 133.7751],
+            "Germany": [51.1657, 10.4515],
+            "France": [46.2276, 2.2137],
+            "Canada": [56.1304, -106.3468],
+            "Brazil": [-14.2350, -51.9253]
+        };
+
+        class CurioMap {
+            constructor() {
+                this.map = null;
+                this.markers = [];
+                this.currentCountry = null;
+                this.data = sampleData;
+                this.init();
+            }
+
+            init() {
+                this.initMap();
+                this.initEventListeners();
+                this.loadMarkers();
+                this.updateStats();
+            }
+
+            initMap() {
+                this.map = L.map('map', {
+                    center: [20, 0],
+                    zoom: 2,
+                    zoomControl: true,
+                    scrollWheelZoom: true,
+                    doubleClickZoom: true,
+                    boxZoom: true
+                });
+
+                // Add tile layer with a nice style
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 18
+                }).addTo(this.map);
+            }
+
+            initEventListeners() {
+                const toggleBtn = document.getElementById('toggleSidebar');
+                const sidebar = document.getElementById('sidebar');
+
+                toggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('collapsed');
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.toggle('open');
+                    }
+                });
+
+                // Close sidebar on mobile when clicking map
+                this.map.on('click', () => {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            }
+
+            loadMarkers() {
+                Object.entries(this.data).forEach(([country, articles]) => {
+                    const coords = countryCoordinates[country];
+                    if (coords && articles.length > 0) {
+                        this.addCountryMarker(country, coords, articles);
+                    }
+                });
+            }
+
+            addCountryMarker(country, coords, articles) {
+                const marker = L.marker(coords, {
+                    title: country
+                }).addTo(this.map);
+
+                // Create popup content
+                const popupContent = this.createPopupContent(country, articles);
+                marker.bindPopup(popupContent, {
+                    maxWidth: 300,
+                    className: 'curiomap-popup'
+                });
+
+                // Add click event
+                marker.on('click', () => {
+                    this.selectCountry(country, articles);
+                });
+
+                this.markers.push(marker);
+            }
+
+            createPopupContent(country, articles) {
+                const article = articles[0]; // Show first article in popup
+                return `
+                    <div class="popup-content">
+                        <div class="popup-title">${country}</div>
+                        <div class="popup-description">${articles.length} unusual article${articles.length > 1 ? 's' : ''}</div>
+                        <div style="margin-top: 10px;">
+                            <strong>${article.title}</strong><br>
+                            <small>${article.description}</small>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <a href="${article.url}" target="_blank" class="popup-link">
+                                Read on Wikipedia →
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            selectCountry(country, articles) {
+                this.currentCountry = country;
+                this.updateSidebar(country, articles);
+                
+                // Open sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.add('open');
+                }
+            }
+
+            updateSidebar(country, articles) {
+                const sidebarBody = document.getElementById('sidebar-body');
+                
+                const content = `
+                    <div class="country-info">
+                        <h3>${country}</h3>
+                        <p>${articles.length} unusual article${articles.length > 1 ? 's' : ''} from ${articles[0]?.source_region || 'various regions'}</p>
+                    </div>
+                    <div class="article-list">
+                        ${articles.map(article => this.createArticleCard(article)).join('')}
+                    </div>
+                `;
+                
+                sidebarBody.innerHTML = content;
+
+                // Add click events to article cards
+                articles.forEach(article => {
+                    const card = document.querySelector(`[data-article-id="${article.id}"]`);
+                    if (card) {
+                        card.addEventListener('click', () => {
+                            window.open(article.url, '_blank');
+                        });
+                    }
+                });
+            }
+
+            createArticleCard(article) {
+                return `
+                    <div class="article-item" data-article-id="${article.id}">
+                        <div class="article-title">${article.title}</div>
+                        <div class="article-description">${article.description}</div>
+                        <div class="article-extract">${article.extract.substring(0, 150)}${article.extract.length > 150 ? '...' : ''}</div>
+                        <a href="${article.url}" target="_blank" class="article-link" onclick="event.stopPropagation();">
+                            Read on Wikipedia →
+                        </a>
+                    </div>
+                `;
+            }
+
+            updateStats() {
+                const totalCountries = Object.keys(this.data).length;
+                const totalArticles = Object.values(this.data).reduce((sum, articles) => sum + articles.length, 0);
+                
+                document.getElementById('stats').innerHTML = `
+                    📍 ${totalCountries} countries • 📚 ${totalArticles} articles
+                `;
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new CurioMap();
+        });
+    </script>
+</body>
+</html>
