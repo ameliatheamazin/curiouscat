@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CurioMap - Unusual Wikipedia Articles</title>
+    <title>CurioCat Explorer - Purr-fectly Weird Wikipedia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
     <style>
         * {
@@ -14,15 +14,241 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff9a56 0%, #ffad56 50%, #ffc163 100%);
             height: 100vh;
             overflow: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20">🐾</text></svg>'), auto;
         }
         
         .app-container {
             display: flex;
             height: 100vh;
             position: relative;
+        }
+
+        /* Cat Avatar - Main Character */
+        .curious-cat {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1004;
+            width: 80px;
+            height: 80px;
+            animation: catBob 2s ease-in-out infinite;
+            cursor: pointer;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+            font-size: 4rem;
+        }
+
+        .curious-cat:hover {
+            transform: translateX(-50%) scale(1.2);
+            animation: catExcited 0.5s ease infinite;
+        }
+
+        .curious-cat.exploring {
+            animation: catWalk 1s ease-in-out;
+        }
+
+        @keyframes catBob {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        @keyframes catExcited {
+            0%, 100% { transform: translateX(-50%) rotate(0deg) scale(1.2); }
+            25% { transform: translateX(-50%) rotate(-5deg) scale(1.25); }
+            75% { transform: translateX(-50%) rotate(5deg) scale(1.25); }
+        }
+
+        @keyframes catWalk {
+            0% { transform: translateX(-50%) scale(1); }
+            25% { transform: translateX(-40%) scale(1.1) rotate(10deg); }
+            50% { transform: translateX(-50%) scale(1.2) rotate(0deg); }
+            75% { transform: translateX(-60%) scale(1.1) rotate(-10deg); }
+            100% { transform: translateX(-50%) scale(1) rotate(0deg); }
+        }
+
+        /* Cat Thoughts Bubble */
+        .cat-thoughts {
+            position: absolute;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1003;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        .cat-thoughts.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .cat-thoughts::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 30%;
+            border: 8px solid transparent;
+            border-top-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Floating Action Buttons - Cat Themed */
+        .floating-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1002;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        .pounce-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            animation: catTailWag 1.5s ease-in-out infinite;
+        }
+
+        .prowl-btn {
+            background: linear-gradient(135deg, #a8e6cf, #00b894);
+            color: white;
+        }
+
+        .nap-btn {
+            background: linear-gradient(135deg, #dda0dd, #9b59b6);
+            color: white;
+        }
+
+        /* Dynamic Mode Toggle */
+        .toggle-container {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 154, 86, 0.1);
+            border-radius: 10px;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #ff9a56;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        @keyframes catTailWag {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        /* Paw Print Trail */
+        .paw-prints {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1001;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: pawFade 2s ease-out forwards;
+        }
+
+        @keyframes pawFade {
+            0% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        /* Enhanced Map Container with Cat Elements */
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+            background-size: 150px 150px;
+            animation: drift 25s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-150px) translateY(-150px); }
         }
         
         .sidebar {
@@ -33,18 +259,43 @@
             box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             overflow-y: auto;
-            transition: transform 0.3s ease;
-        }
-        
-        .sidebar.collapsed {
-            transform: translateX(-100%);
         }
         
         .sidebar-header {
             padding: 20px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #ff9a56 0%, #ffad56 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-header::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            animation: twinkle 1.5s ease-in-out infinite alternate;
+        }
+
+        .sidebar-header::after {
+            content: '🐾';
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            font-size: 1.2rem;
+            animation: pawPrint 2s ease-in-out infinite;
+        }
+
+        @keyframes pawPrint {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.4; transform: rotate(0deg) scale(1); }
+            100% { opacity: 1; transform: rotate(180deg) scale(1.2); }
         }
         
         .sidebar-header h1 {
@@ -65,9 +316,31 @@
         .country-info {
             margin-bottom: 20px;
             padding: 15px;
-            background: rgba(79, 172, 254, 0.1);
-            border-radius: 10px;
-            border-left: 4px solid #4facfe;
+            background: rgba(255, 154, 86, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #ff9a56;
+            animation: slideInLeft 0.5s ease;
+            position: relative;
+        }
+
+        .country-info::before {
+            content: '🐱';
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            font-size: 2rem;
+            animation: catCurious 2s ease-in-out infinite;
+        }
+
+        @keyframes catCurious {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
         .country-info h3 {
@@ -81,6 +354,40 @@
             font-size: 0.9rem;
             line-height: 1.5;
         }
+
+        /* Dynamic data indicators */
+        .dynamic-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 154, 86, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin: 4px 2px;
+        }
+
+        .popularity-hot { background: #ff4757; color: white; }
+        .popularity-popular { background: #ff6b35; color: white; }
+        .popularity-moderate { background: #ffa502; color: white; }
+        .popularity-niche { background: #747d8c; color: white; }
+        .popularity-unknown { background: #ddd; color: #666; }
+
+        .views-indicator {
+            background: #00a8ff;
+            color: white;
+        }
+
+        .trending-indicator {
+            background: #9c88ff;
+            color: white;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
         
         .article-list {
             display: flex;
@@ -90,16 +397,61 @@
         
         .article-item {
             background: white;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 15px;
+            padding: 18px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.5s ease;
+            animation-fill-mode: both;
+            border: 2px solid transparent;
+        }
+
+        .article-item:nth-child(1) { animation-delay: 0.1s; }
+        .article-item:nth-child(2) { animation-delay: 0.2s; }
+        .article-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .article-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 154, 86, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .article-item::after {
+            content: '🐾';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         .article-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: #ff9a56;
+        }
+
+        .article-item:hover::before {
+            left: 100%;
+        }
+
+        .article-item:hover::after {
+            opacity: 1;
+            transform: scale(1.2) rotate(15deg);
         }
         
         .article-title {
@@ -122,18 +474,25 @@
             line-height: 1.3;
             margin-bottom: 10px;
         }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
         
         .article-link {
             display: inline-flex;
             align-items: center;
-            color: #4facfe;
+            color: #ff9a56;
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 500;
         }
         
         .article-link:hover {
-            color: #00f2fe;
+            color: #ee5a24;
         }
         
         .map-container {
@@ -144,47 +503,181 @@
         #map {
             height: 100%;
             width: 100%;
-        }
-        
-        .toggle-sidebar {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .toggle-sidebar:hover {
-            background: white;
-            transform: scale(1.1);
+            position: relative;
+            z-index: 2;
         }
         
         .loading {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 40px;
             color: #666;
         }
+
+        .loading-cat {
+            font-size: 3rem;
+            animation: catSleep 2s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes catSleep {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .error-message {
+            background: #ffcccc;
+            border: 1px solid #ff6666;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+            color: #cc0000;
+        }
         
         .stats {
             padding: 15px 20px;
-            background: rgba(79, 172, 254, 0.1);
-            border-top: 1px solid rgba(79, 172, 254, 0.2);
+            background: rgba(255, 154, 86, 0.1);
+            border-top: 1px solid rgba(255, 154, 86, 0.2);
             text-align: center;
             font-size: 0.85rem;
             color: #666;
+        }
+
+        /* Welcome Message - Cat Themed */
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 1005;
+            backdrop-filter: blur(10px);
+            animation: bounceIn 1s ease;
+            border: 3px solid #ff9a56;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+            70% { transform: translate(-50%, -50%) scale(0.9); }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .welcome-message.hidden {
+            display: none;
+        }
+
+        .welcome-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome-text {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .welcome-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #ff9a56, #ffad56);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 154, 86, 0.3);
+        }
+
+        .welcome-btn.secondary {
+            background: rgba(255, 154, 86, 0.1);
+            color: #ff9a56;
+        }
+
+        /* Teaser Strip - Cat Themed */
+        .teaser-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-top: 3px solid #ff9a56;
+        }
+
+        .teaser-strip.show {
+            transform: translateY(0);
+        }
+
+        .teaser-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .teaser-text {
+            flex: 1;
+        }
+
+        .teaser-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .teaser-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .teaser-button {
+            background: #ff9a56;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .teaser-button:hover {
+            background: #ee5a24;
+            transform: translateY(-2px);
         }
         
         .popup-content {
@@ -207,7 +700,7 @@
         
         .popup-link {
             display: inline-block;
-            color: #4facfe;
+            color: #ff9a56;
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 500;
@@ -215,7 +708,7 @@
         }
         
         .popup-link:hover {
-            color: #00f2fe;
+            color: #ee5a24;
         }
         
         @media (max-width: 768px) {
@@ -223,108 +716,110 @@
                 width: 100%;
                 position: absolute;
                 height: 100%;
-                transform: translateX(-100%);
             }
             
-            .sidebar.open {
-                transform: translateX(0);
-            }
-            
-            .toggle-sidebar {
+            .floating-controls {
                 top: 10px;
-                left: 10px;
-                width: 45px;
-                height: 45px;
+                right: 10px;
+            }
+
+            .curious-cat {
+                width: 60px;
+                height: 60px;
+            }
+
+            .welcome-message {
+                margin: 20px;
+                width: calc(100% - 40px);
             }
         }
     </style>
 </head>
 <body>
     <div class="app-container">
+        <!-- Main Cat Character -->
+        <div class="curious-cat" id="curiousCat" title="Click me! I'm your guide!">🐱</div>
+        
+        <!-- Cat Thoughts -->
+        <div class="cat-thoughts" id="catThoughts">
+            Meow! Let's explore something weird! 🗺️
+        </div>
+
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h1>🗺️ CurioMap</h1>
-                <p>Unusual Wikipedia Articles Around the World</p>
+                <h1>CurioCat Explorer</h1>
+                <p>Purr-fectly Weird Wikipedia Discoveries</p>
             </div>
             <div class="sidebar-content">
+                <div class="toggle-container">
+                    <label>Static Mode</label>
+                    <label class="toggle">
+                        <input type="checkbox" id="dynamic-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Live Data</label>
+                </div>
+                
                 <div id="sidebar-body">
                     <div class="loading">
-                        <p>Click on a country to explore unusual articles...</p>
+                        <div class="loading-cat">😴</div>
+                        <p>This kitty is loading data...</p>
+                        <p><small>Connecting to the weird wide web...</small></p>
                     </div>
                 </div>
                 <div class="stats" id="stats">
-                    Ready to explore! 🚀
+                    Connecting to backend... 🐾
                 </div>
             </div>
         </div>
         
         <div class="map-container">
-            <button class="toggle-sidebar" id="toggleSidebar">
-                🗺️
-            </button>
+            <div class="floating-controls">
+                <button class="cat-btn pounce-btn" id="pounceBtn" title="Let me pounce on something random!">
+                    🦘 Pounce!
+                </button>
+                <button class="cat-btn prowl-btn" id="prowlBtn" title="Prowl for today's weird find">
+                    🌙 Night Prowl
+                </button>
+                <button class="cat-btn nap-btn" id="napBtn" title="Share my discoveries">
+                    💤 Share Nap
+                </button>
+            </div>
+
             <div id="map"></div>
+
+            <div class="teaser-strip" id="teaserStrip">
+                <div class="teaser-content">
+                    <div class="teaser-text">
+                        <div class="teaser-title" id="teaserTitle">🐱 Sniff sniff... something interesting here!</div>
+                        <div class="teaser-description" id="teaserDesc">Let me investigate this curious place...</div>
+                    </div>
+                    <button class="teaser-button" id="teaserBtn">
+                        🐾 Let's Go!
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="welcome-message" id="welcomeMessage">
+            <div class="welcome-title">🐱 Meow! I'm your CurioCat guide!</div>
+            <div class="welcome-text">
+                I love exploring weird and wonderful places around the world! 
+                Click on countries, let me pounce randomly, or hover over places to see what catches my whiskers! 🐾
+            </div>
+            <div class="welcome-actions">
+                <button class="welcome-btn" id="startExploring">
+                    🗺️ Start Prowling
+                </button>
+                <button class="welcome-btn secondary" id="surpriseMe">
+                    🎲 Surprise Me!
+                </button>
+            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script>
-        // Sample data - replace with your actual data
-        const sampleData = {
-            "United Kingdom": [
-                {
-                    "id": "uk_boring_oregon",
-                    "title": "Boring, Oregon",
-                    "description": "Unincorporated community in Oregon",
-                    "extract": "Boring is an unincorporated community in Clackamas County, Oregon, United States. It is located along Oregon Route 212...",
-                    "url": "https://en.wikipedia.org/wiki/Boring,_Oregon",
-                    "thumbnail": null,
-                    "source_region": "North America"
-                },
-                {
-                    "id": "uk_hell_norway",
-                    "title": "Hell, Norway",
-                    "description": "Village in Norway",
-                    "extract": "Hell is a village in the Lånke area of the municipality of Stjørdal in Trøndelag county, Norway...",
-                    "url": "https://en.wikipedia.org/wiki/Hell,_Norway",
-                    "thumbnail": null,
-                    "source_region": "Europe"
-                }
-            ],
-            "Japan": [
-                {
-                    "id": "japan_cat_cafe",
-                    "title": "Cat café",
-                    "description": "Theme café where patrons can interact with cats",
-                    "extract": "A cat café is a theme café whose attraction is cats who can be watched and played with. Patrons pay a cover fee...",
-                    "url": "https://en.wikipedia.org/wiki/Cat_caf%C3%A9",
-                    "thumbnail": null,
-                    "source_region": "Asia"
-                }
-            ],
-            "United States": [
-                {
-                    "id": "us_gravity_hill",
-                    "title": "Gravity hill",
-                    "description": "Places where the layout creates an optical illusion",
-                    "extract": "A gravity hill, also known as a magnetic hill, mystery hill, mystery spot, gravity road, or anti-gravity hill...",
-                    "url": "https://en.wikipedia.org/wiki/Gravity_hill",
-                    "thumbnail": null,
-                    "source_region": "North America"
-                }
-            ],
-            "Australia": [
-                {
-                    "id": "au_drop_bear",
-                    "title": "Drop bear",
-                    "description": "Fictitious Australian marsupial",
-                    "extract": "A drop bear is a fictitious Australian marsupial. Drop bears are commonly said to be unusually large...",
-                    "url": "https://en.wikipedia.org/wiki/Drop_bear",
-                    "thumbnail": null,
-                    "source_region": "Oceania"
-                }
-            ]
-        };
-
         // Country coordinates for map markers
         const countryCoordinates = {
             "United Kingdom": [55.3781, -3.4360],
@@ -334,23 +829,171 @@
             "Germany": [51.1657, 10.4515],
             "France": [46.2276, 2.2137],
             "Canada": [56.1304, -106.3468],
-            "Brazil": [-14.2350, -51.9253]
+            "Brazil": [-14.2350, -51.9253],
+            "China": [35.8617, 104.1954],
+            "India": [20.5937, 78.9629],
+            "South Africa": [-30.5595, 22.9375],
+            "Egypt": [26.0975, 30.0444],
+            "South Korea": [35.9078, 127.7669],
+            "Thailand": [15.8700, 100.9925],
+            "Indonesia": [-0.7893, 113.9213],
+            "Netherlands": [52.1326, 5.2913],
+            "Sweden": [60.1282, 18.6435],
+            "Norway": [60.4720, 8.4689],
+            "Mexico": [23.6345, -102.5528],
+            "Argentina": [-38.4161, -63.6167],
+            "New Zealand": [-40.9006, 174.8860],
+            "Singapore": [1.3521, 103.8198],
+            "Malaysia": [4.2105, 101.9758]
         };
 
-        class CurioMap {
+        // Cat thoughts and reactions
+        const catThoughts = [
+            "Meow! This looks interesting! 🧐",
+            "My whiskers are tingling with curiosity! ✨",
+            "Ooh, what weird thing did I find here? 🔍",
+            "This human place seems purr-culiar! 😸",
+            "Time for some feline investigation! 🕵️‍♀️",
+            "My cat senses are picking up weirdness! 🐾",
+            "Let's pounce on this mystery! 🦘",
+            "Something fishy... and I LOVE fishy! 🐟"
+        ];
+
+        const hoverThoughts = [
+            "Sniff sniff... interesting! 👃",
+            "My ears are perking up! 👂",
+            "This place smells like adventure! 🗺️",
+            "Curiosity is getting the better of me! 😺",
+            "Should I investigate this? 🤔"
+        ];
+
+        const loadingThoughts = [
+            "Pawing through the data... 🐾",
+            "Hunting for weird articles... 🏹",
+            "My whiskers are working overtime! ⚡",
+            "Sniffing out the good stuff... 👃",
+            "Almost caught something interesting! 🎣"
+        ];
+
+        class CurioCatExplorer {
             constructor() {
                 this.map = null;
                 this.markers = [];
                 this.currentCountry = null;
-                this.data = sampleData;
+                this.data = {};
+                this.hoveredMarker = null;
+                this.catMood = "curious";
+                this.pawPrints = [];
+                this.apiBase = 'http://localhost:5000/api';
+                this.availableCountries = [];
                 this.init();
             }
 
-            init() {
+            async init() {
                 this.initMap();
                 this.initEventListeners();
-                this.loadMarkers();
-                this.updateStats();
+                await this.loadInitialData();
+                this.startCatBehaviors();
+            }
+
+            async loadInitialData() {
+                try {
+                    this.showCatThought("Connecting to my data sources... 📡");
+                    
+                    // Load stats and countries
+                    const [statsResponse, countriesResponse] = await Promise.all([
+                        fetch(`${this.apiBase}/stats`),
+                        fetch(`${this.apiBase}/countries`)
+                    ]);
+                    
+                    if (!statsResponse.ok || !countriesResponse.ok) {
+                        throw new Error('Backend connection failed');
+                    }
+                    
+                    const stats = await statsResponse.json();
+                    const countriesData = await countriesResponse.json();
+                    
+                    this.availableCountries = countriesData.countries;
+                    this.updateStats(stats);
+                    this.loadMarkers();
+                    this.showWelcomeMessage();
+                    
+                    this.showCatThought("Data loaded! Ready to explore! 🎉");
+                    
+                } catch (error) {
+                    console.error('Error loading initial data:', error);
+                    this.showError('Could not connect to backend. Make sure the Python server is running on localhost:5000');
+                    this.showCatThought("Meow! Something went wrong... 😿");
+                }
+            }
+
+            showError(message) {
+                const sidebarBody = document.getElementById('sidebar-body');
+                sidebarBody.innerHTML = `
+                    <div class="error-message">
+                        <h4>🐱 Connection Error!</h4>
+                        <p>${message}</p>
+                        <p><small>Try running: <code>python hybrid_backend.py</code></small></p>
+                    </div>
+                `;
+            }
+
+            startCatBehaviors() {
+                // Cat randomly shows thoughts
+                setInterval(() => {
+                    if (Math.random() < 0.3) {
+                        this.showCatThought();
+                    }
+                }, 5000);
+
+                // Cat reacts to user inactivity
+                setTimeout(() => {
+                    if (!this.currentCountry) {
+                        this.catNudge();
+                    }
+                }, 15000);
+            }
+
+            showCatThought(customThought = null) {
+                const thoughts = document.getElementById('catThoughts');
+                const randomThought = customThought || catThoughts[Math.floor(Math.random() * catThoughts.length)];
+                
+                thoughts.textContent = randomThought;
+                thoughts.classList.add('show');
+                
+                setTimeout(() => {
+                    thoughts.classList.remove('show');
+                }, 3000);
+            }
+
+            catNudge() {
+                const cat = document.getElementById('curiousCat');
+                cat.classList.add('exploring');
+                this.showCatThought("Hey human! Click somewhere! I'm getting bored! 😾");
+                
+                setTimeout(() => {
+                    cat.classList.remove('exploring');
+                }, 1000);
+            }
+
+            showWelcomeMessage() {
+                const welcome = document.getElementById('welcomeMessage');
+                setTimeout(() => {
+                    welcome.classList.add('hidden');
+                }, 10000);
+            }
+
+            createPawPrint(x, y) {
+                const pawPrint = document.createElement('div');
+                pawPrint.className = 'paw-prints';
+                pawPrint.textContent = '🐾';
+                pawPrint.style.left = x + 'px';
+                pawPrint.style.top = y + 'px';
+                document.body.appendChild(pawPrint);
+
+                setTimeout(() => {
+                    pawPrint.remove();
+                }, 2000);
             }
 
             initMap() {
@@ -363,143 +1006,438 @@
                     boxZoom: true
                 });
 
-                // Add tile layer with a nice style
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors',
-                    maxZoom: 18
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a> | CurioCat Explorer',
+                    maxZoom: 19,
+                    subdomains: 'abcd'
                 }).addTo(this.map);
+
+                // Add paw prints on map clicks
+                this.map.on('click', (e) => {
+                    this.createPawPrint(e.containerPoint.x, e.containerPoint.y);
+                });
             }
 
             initEventListeners() {
-                const toggleBtn = document.getElementById('toggleSidebar');
-                const sidebar = document.getElementById('sidebar');
+                // Cat character interactions
+                document.getElementById('curiousCat').addEventListener('click', () => {
+                    this.exploreRandomCountry();
+                    this.showCatThought("Wheee! Let's go exploring! 🚀");
+                });
 
-                toggleBtn.addEventListener('click', () => {
-                    sidebar.classList.toggle('collapsed');
-                    if (window.innerWidth <= 768) {
-                        sidebar.classList.toggle('open');
+                // Pounce button (random exploration)
+                document.getElementById('pounceBtn').addEventListener('click', () => {
+                    this.exploreRandomCountry();
+                    this.showCatThought("POUNCE! Got something weird! 🦘");
+                });
+
+                // Night prowl button (daily weird)
+                document.getElementById('prowlBtn').addEventListener('click', () => {
+                    this.showDailyWeird();
+                    this.showCatThought("Time for my midnight prowl... 🌙");
+                });
+
+                // Nap button (share)
+                document.getElementById('napBtn').addEventListener('click', () => {
+                    this.shareCurrentView();
+                    this.showCatThought("Sharing my favorite nap spots! 💤");
+                });
+
+                // Welcome message buttons
+                document.getElementById('startExploring').addEventListener('click', () => {
+                    document.getElementById('welcomeMessage').classList.add('hidden');
+                    this.showCatThought("Great! Let's start our adventure! 🗺️");
+                });
+
+                document.getElementById('surpriseMe').addEventListener('click', () => {
+                    document.getElementById('welcomeMessage').classList.add('hidden');
+                    this.exploreRandomCountry();
+                    this.showCatThought("Surprise time! I love surprises! 🎉");
+                });
+
+                // Teaser button
+                document.getElementById('teaserBtn').addEventListener('click', () => {
+                    if (this.hoveredMarker && this.hoveredMarker.country) {
+                        this.loadCountryData(this.hoveredMarker.country);
+                        this.showCatThought("Let's investigate this mystery! 🔍");
                     }
                 });
 
-                // Close sidebar on mobile when clicking map
-                this.map.on('click', () => {
-                    if (window.innerWidth <= 768) {
-                        sidebar.classList.remove('open');
+                // Dynamic toggle
+                document.getElementById('dynamic-toggle').addEventListener('change', () => {
+                    if (this.currentCountry) {
+                        this.loadCountryData(this.currentCountry);
+                        this.showCatThought("Switching data modes... 🔄");
                     }
                 });
+            }
+
+            async exploreRandomCountry() {
+                if (this.availableCountries.length === 0) {
+                    this.showCatThought("No countries loaded yet... 😿");
+                    return;
+                }
+
+                const cat = document.getElementById('curiousCat');
+                cat.classList.add('exploring');
+                
+                // Show loading thought
+                const loadingThought = loadingThoughts[Math.floor(Math.random() * loadingThoughts.length)];
+                this.showCatThought(loadingThought);
+                
+                setTimeout(async () => {
+                    const randomCountry = this.availableCountries[Math.floor(Math.random() * this.availableCountries.length)];
+                    
+                    const coords = countryCoordinates[randomCountry];
+                    if (coords) {
+                        this.map.setView(coords, 5);
+                        await this.loadCountryData(randomCountry);
+                    }
+                    
+                    cat.classList.remove('exploring');
+                }, 1000);
+            }
+
+            async showDailyWeird() {
+                if (this.availableCountries.length === 0) return;
+                
+                const today = new Date().getDate();
+                const dailyCountry = this.availableCountries[today % this.availableCountries.length];
+                
+                const coords = countryCoordinates[dailyCountry];
+                if (coords) {
+                    this.map.setView(coords, 5);
+                    await this.loadCountryData(dailyCountry);
+                }
+                
+                this.showNotification(`🌙 Tonight's prowl destination: ${dailyCountry}!`);
+            }
+
+            shareCurrentView() {
+                const url = window.location.href;
+                const shareData = {
+                    title: 'CurioCat Explorer - Weird Places I Found!',
+                    text: `Join me on my purr-fectly weird adventure around the world! Currently exploring: ${this.currentCountry || 'the world'} 🐱🗺️`,
+                    url: url
+                };
+
+                if (navigator.share) {
+                    navigator.share(shareData);
+                } else {
+                    navigator.clipboard.writeText(`${shareData.text} ${url}`);
+                    this.showNotification('Purrfect! Link copied so you can share my discoveries! 📋');
+                }
+            }
+
+            showNotification(message) {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 120px;
+                    right: 20px;
+                    background: rgba(255, 154, 86, 0.95);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 15px;
+                    z-index: 9999;
+                    font-weight: 600;
+                    animation: slideInRight 0.3s ease;
+                    max-width: 300px;
+                    border: 2px solid #fff;
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 4000);
             }
 
             loadMarkers() {
-                Object.entries(this.data).forEach(([country, articles]) => {
+                // Clear existing markers
+                this.markers.forEach(marker => this.map.removeLayer(marker));
+                this.markers = [];
+
+                // Add markers for available countries
+                this.availableCountries.forEach(country => {
                     const coords = countryCoordinates[country];
-                    if (coords && articles.length > 0) {
-                        this.addCountryMarker(country, coords, articles);
+                    if (coords) {
+                        this.addCountryMarker(country, coords);
                     }
                 });
             }
 
-            addCountryMarker(country, coords, articles) {
+            addCountryMarker(country, coords) {
+                // Create custom cat paw marker
+                const catIcon = L.divIcon({
+                    html: '<div style="font-size: 2rem; text-align: center;">🐾</div>',
+                    iconSize: [30, 30],
+                    className: 'cat-marker'
+                });
+
                 const marker = L.marker(coords, {
+                    icon: catIcon,
                     title: country
                 }).addTo(this.map);
 
-                // Create popup content
-                const popupContent = this.createPopupContent(country, articles);
-                marker.bindPopup(popupContent, {
-                    maxWidth: 300,
-                    className: 'curiomap-popup'
+                marker.country = country; // Store country reference
+
+                // Enhanced hover effects
+                marker.on('mouseover', () => {
+                    this.showTeaser(country);
+                    this.hoveredMarker = marker;
+                    const randomHover = hoverThoughts[Math.floor(Math.random() * hoverThoughts.length)];
+                    this.showCatThought(randomHover);
                 });
 
-                // Add click event
-                marker.on('click', () => {
-                    this.selectCountry(country, articles);
+                marker.on('mouseout', () => {
+                    this.hideTeaser();
+                    this.hoveredMarker = null;
+                });
+
+                marker.on('click', async () => {
+                    await this.loadCountryData(country);
+                    this.showCatThought("Found something interesting! 😸");
                 });
 
                 this.markers.push(marker);
             }
 
-            createPopupContent(country, articles) {
-                const article = articles[0]; // Show first article in popup
+            showTeaser(country) {
+                const strip = document.getElementById('teaserStrip');
+                const title = document.getElementById('teaserTitle');
+                const desc = document.getElementById('teaserDesc');
+                
+                title.textContent = `🐱 ${country}: Mystery awaits!`;
+                desc.textContent = `Click to discover what weird things I can find here...`;
+                
+                strip.classList.add('show');
+            }
+
+            hideTeaser() {
+                const strip = document.getElementById('teaserStrip');
+                strip.classList.remove('show');
+            }
+
+            async loadCountryData(country) {
+                try {
+                    this.currentCountry = country;
+                    const isDynamic = document.getElementById('dynamic-toggle').checked;
+                    
+                    // Show loading state
+                    this.showLoadingState(country);
+                    
+                    const response = await fetch(`${this.apiBase}/country/${country}?dynamic=${isDynamic}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.articles && data.articles.length > 0) {
+                        this.updateSidebar(country, data.articles, isDynamic);
+                        
+                        // Update marker popup with real data
+                        const marker = this.markers.find(m => m.country === country);
+                        if (marker) {
+                            const popupContent = this.createPopupContent(country, data.articles, isDynamic);
+                            marker.bindPopup(popupContent, {
+                                maxWidth: 350,
+                                className: 'curiomap-popup'
+                            });
+                        }
+                    } else {
+                        this.showNoArticles(country);
+                    }
+                    
+                    this.hideTeaser();
+                    
+                } catch (error) {
+                    console.error(`Error loading data for ${country}:`, error);
+                    this.showError(`Could not load data for ${country}. Backend might be offline.`);
+                    this.showCatThought("Oops! Couldn't fetch that data... 😿");
+                }
+            }
+
+            showLoadingState(country) {
+                const sidebarBody = document.getElementById('sidebar-body');
+                sidebarBody.innerHTML = `
+                    <div class="loading">
+                        <div class="loading-cat">🐱</div>
+                        <p>Investigating ${country}...</p>
+                        <p><small>My whiskers are working hard!</small></p>
+                    </div>
+                `;
+            }
+
+            showNoArticles(country) {
+                const sidebarBody = document.getElementById('sidebar-body');
+                sidebarBody.innerHTML = `
+                    <div class="loading">
+                        <div class="loading-cat">😿</div>
+                        <p>No weird articles found for ${country}</p>
+                        <p><small>This place might be too normal for me!</small></p>
+                    </div>
+                `;
+            }
+
+            createPopupContent(country, articles, isDynamic) {
+                const article = articles[0];
+                const totalViews = isDynamic && article.dynamic ? 
+                    `${article.dynamic.pageviews_30d.toLocaleString()} views` : '';
+                const popularity = isDynamic && article.dynamic ? 
+                    article.dynamic.popularity_tier : 'unknown';
+                
                 return `
                     <div class="popup-content">
-                        <div class="popup-title">${country}</div>
-                        <div class="popup-description">${articles.length} unusual article${articles.length > 1 ? 's' : ''}</div>
+                        <div class="popup-title">🐾 ${country}</div>
+                        <div class="popup-description">
+                            ${articles.length} weird find${articles.length > 1 ? 's' : ''} 
+                            ${isDynamic && totalViews ? `• ${totalViews}` : ''}
+                        </div>
                         <div style="margin-top: 10px;">
                             <strong>${article.title}</strong><br>
-                            <small>${article.description}</small>
+                            <small>${article.description || article.extract?.substring(0, 100) + '...'}</small><br>
+                            ${isDynamic && article.dynamic ? 
+                                `<span class="dynamic-indicator popularity-${popularity}">
+                                    ${popularity.toUpperCase()}
+                                </span>` : 
+                                '<em style="color: #ff9a56;">Purrfect for exploration! 🐾</em>'
+                            }
                         </div>
                         <div style="margin-top: 8px;">
                             <a href="${article.url}" target="_blank" class="popup-link">
-                                Read on Wikipedia →
+                                🐾 Investigate Further →
                             </a>
                         </div>
                     </div>
                 `;
             }
 
-            selectCountry(country, articles) {
-                this.currentCountry = country;
-                this.updateSidebar(country, articles);
-                
-                // Open sidebar on mobile
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.add('open');
-                }
-            }
-
-            updateSidebar(country, articles) {
+            updateSidebar(country, articles, isDynamic) {
                 const sidebarBody = document.getElementById('sidebar-body');
+                
+                // Calculate stats for dynamic data
+                let avgViews = 0;
+                let totalTrending = 0;
+                
+                if (isDynamic) {
+                    const articlesWithViews = articles.filter(a => a.dynamic && a.dynamic.pageviews_30d);
+                    if (articlesWithViews.length > 0) {
+                        avgViews = Math.round(
+                            articlesWithViews.reduce((sum, a) => sum + a.dynamic.pageviews_30d, 0) / 
+                            articlesWithViews.length
+                        );
+                        totalTrending = articlesWithViews.reduce((sum, a) => sum + a.dynamic.trending_score, 0);
+                    }
+                }
                 
                 const content = `
                     <div class="country-info">
-                        <h3>${country}</h3>
-                        <p>${articles.length} unusual article${articles.length > 1 ? 's' : ''} from ${articles[0]?.source_region || 'various regions'}</p>
+                        <h3>🐾 ${country}</h3>
+                        <p>${articles.length} weird discover${articles.length > 1 ? 'ies' : 'y'} found!</p>
+                        ${isDynamic ? `
+                            <p><strong>Avg Views:</strong> ${avgViews.toLocaleString()}/month</p>
+                            <p><strong>Trending Score:</strong> ${(totalTrending/articles.length).toFixed(1)}x</p>
+                        ` : ''}
                     </div>
                     <div class="article-list">
-                        ${articles.map(article => this.createArticleCard(article)).join('')}
+                        ${articles.map((article, index) => this.createArticleCard(article, index, isDynamic)).join('')}
                     </div>
                 `;
                 
                 sidebarBody.innerHTML = content;
 
-                // Add click events to article cards
+                // Bind click events
                 articles.forEach(article => {
                     const card = document.querySelector(`[data-article-id="${article.id}"]`);
                     if (card) {
                         card.addEventListener('click', () => {
                             window.open(article.url, '_blank');
+                            this.showCatThought("Off to read more! Learning makes me purr! 📚");
                         });
                     }
                 });
             }
 
-            createArticleCard(article) {
+            createArticleCard(article, index, isDynamic) {
+                const dynamicData = isDynamic && article.dynamic ? article.dynamic : null;
+                
                 return `
-                    <div class="article-item" data-article-id="${article.id}">
+                    <div class="article-item" data-article-id="${article.id}" style="animation-delay: ${index * 0.1}s;">
                         <div class="article-title">${article.title}</div>
-                        <div class="article-description">${article.description}</div>
-                        <div class="article-extract">${article.extract.substring(0, 150)}${article.extract.length > 150 ? '...' : ''}</div>
+                        <div class="article-description">
+                            ${article.description || 'A mysterious Wikipedia discovery!'}
+                        </div>
+                        <div class="article-extract">
+                            ${(article.extract || '').substring(0, 130)}${(article.extract || '').length > 130 ? '...' : ''}
+                        </div>
+                        ${dynamicData ? `
+                            <div class="article-meta">
+                                <span class="dynamic-indicator views-indicator">
+                                    👀 ${dynamicData.pageviews_30d.toLocaleString()}
+                                </span>
+                                <span class="dynamic-indicator popularity-${dynamicData.popularity_tier}">
+                                    ${dynamicData.popularity_tier.toUpperCase()}
+                                </span>
+                                ${dynamicData.trending_score > 1.5 ? 
+                                    '<span class="dynamic-indicator trending-indicator">🔥 TRENDING</span>' : 
+                                    ''
+                                }
+                            </div>
+                        ` : `
+                            <div class="article-meta">
+                                <span class="dynamic-indicator">
+                                    🐾 Purrfectly weird!
+                                </span>
+                            </div>
+                        `}
                         <a href="${article.url}" target="_blank" class="article-link" onclick="event.stopPropagation();">
-                            Read on Wikipedia →
+                            🐾 Pounce on Wikipedia →
                         </a>
                     </div>
                 `;
             }
 
-            updateStats() {
-                const totalCountries = Object.keys(this.data).length;
-                const totalArticles = Object.values(this.data).reduce((sum, articles) => sum + articles.length, 0);
+            updateStats(stats) {
+                const statsEl = document.getElementById('stats');
+                const lastUpdated = stats.last_updated ? 
+                    new Date(stats.last_updated).toLocaleDateString() : 
+                    'unknown';
                 
-                document.getElementById('stats').innerHTML = `
-                    📍 ${totalCountries} countries • 📚 ${totalArticles} articles
+                statsEl.innerHTML = `
+                    🌍 ${stats.total_countries} countries explored • 
+                    📚 ${stats.total_articles} weird finds • 
+                    📅 Updated: ${lastUpdated}
                 `;
             }
         }
 
         // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            new CurioMap();
+            new CurioCatExplorer();
         });
+
+        // Add CSS animation keyframes for slideInRight
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            .cat-marker {
+                cursor: pointer !important;
+                transition: all 0.3s ease;
+            }
+            
+            .cat-marker:hover {
+                transform: scale(1.5) rotate(15deg);
+                filter: drop-shadow(0 0 15px rgba(255, 154, 86, 0.8));
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

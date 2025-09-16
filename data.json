@@ -1,0 +1,888 @@
+{
+  "Nigeria": [
+    {
+      "id": "abuja_airplane_house",
+      "title": "Abuja Airplane House",
+      "description": "Building in Asokoro, Abuja",
+      "extract": "The Abuja Airplane House is located in the Asokoro district of Abuja in Nigeria. The house can be seen from the busy Murtala Muhammad Expressway. Spanning the roof of the main villa is a 100-foot-long airplane with a 50-foot wingspan. Beyond the main structure, the property features aircraft-themed ...",
+      "url": "https://en.wikipedia.org/wiki/Abuja_Airplane_House",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Abuja_Airplane_House.jpg/330px-Abuja_Airplane_House.jpg",
+      "source_region": "Africa",
+      "identified_country": "Nigeria",
+      "country_confidence": 1.0,
+      "categories": [
+        "Articles needing additional categories from November 2023",
+        "Articles with short description",
+        "Buildings and structures in Abuja",
+        "Coordinates on Wikidata",
+        "Houses in Nigeria",
+        "Infobox mapframe without OSM relation ID on Wikidata",
+        "Landmarks in Nigeria",
+        "Novelty architecture",
+        "Pages using gadget WikiMiniAtlas",
+        "Pages using the Kartographer extension"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 11
+      }
+    }
+  ],
+  "Senegal": [
+    {
+      "id": "akon_city",
+      "title": "Akon City",
+      "description": "Planned city in Thiès Region, Senegal",
+      "extract": "Akon City was a planned community and city in the M'bour Department of Senegal by Senegalese-American singer and entrepreneur Akon. The project was first announced by Akon in 2018. Akon said in October 2022 that construction of the city's first phase would begin in 2023 and be completed in 2028. Ako...",
+      "url": "https://en.wikipedia.org/wiki/Akon_City",
+      "thumbnail": null,
+      "source_region": "Africa",
+      "identified_country": "Senegal",
+      "country_confidence": 1.0,
+      "categories": [
+        "Akon",
+        "All articles containing potentially dated statements",
+        "Articles containing French-language text",
+        "Articles containing Wolof-language text",
+        "Articles containing potentially dated statements from February 2024",
+        "Articles with short description",
+        "Coordinates on Wikidata",
+        "Neo-futurist architecture",
+        "Official website not in Wikidata",
+        "Pages using gadget WikiMiniAtlas"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 18
+      }
+    },
+    {
+      "id": "akon",
+      "title": "Akon",
+      "description": "American singer (born 1973)",
+      "extract": "Aliaune Damala Bouga Time Puru Nacka Lu Lu Lu Badara Akon Thiam, known mononymously as Akon, is an American singer, songwriter, rapper, record producer, businessman, and philanthropist. An influential figure in world music, he rose to prominence in 2004 following the release of his single \"Locked Up...",
+      "url": "https://en.wikipedia.org/wiki/Akon",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Akon.jpg",
+      "source_region": "Africa",
+      "identified_country": "Senegal",
+      "country_confidence": 1.0,
+      "categories": [
+        "1973 births",
+        "20th-century American male rappers",
+        "21st-century African-American male singers",
+        "21st-century American male rappers",
+        "21st-century American philanthropists",
+        "21st-century American rappers",
+        "21st-century Senegalese male singers",
+        "Activists from Georgia (U.S. state)",
+        "Activists from Missouri",
+        "Activists from New Jersey"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 77
+      }
+    },
+    {
+      "id": "senegal",
+      "title": "Senegal",
+      "description": "Country in West Africa",
+      "extract": "Senegal, officially the Republic of Senegal, is the westernmost country in West Africa, situated along the Atlantic Ocean coast. It borders Mauritania to the north, Mali to the east, Guinea to the southeast and Guinea-Bissau to the southwest. Senegal nearly surrounds The Gambia, a country occupying ...",
+      "url": "https://en.wikipedia.org/wiki/Senegal",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/330px-Flag_of_Senegal.svg.png",
+      "source_region": "Africa",
+      "identified_country": "Senegal",
+      "country_confidence": 1.0,
+      "categories": [
+        "1960 establishments in Africa",
+        "1960 establishments in Senegal",
+        "All articles containing potentially dated statements",
+        "All articles needing additional references",
+        "All articles that may contain original research",
+        "All articles with dead external links",
+        "All articles with unsourced statements",
+        "Articles containing Arabic-language text",
+        "Articles containing French-language text",
+        "Articles containing Pulaar-language text"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 55
+      }
+    }
+  ],
+  "Antarctica": [
+    {
+      "id": "blood_falls",
+      "title": "Blood Falls",
+      "description": "Red-colored seep of saltwater flowing from Taylor Glacier in Antarctica",
+      "extract": "Blood Falls is an outflow of an iron(III) oxide–tainted plume of saltwater, flowing from the tongue of Taylor Glacier onto the ice-covered surface of West Lake Bonney in the Taylor Valley of the McMurdo Dry Valleys in Victoria Land, East Antarctica.",
+      "url": "https://en.wikipedia.org/wiki/Blood_Falls",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Blood_Falls_by_Peter_Rejcek.jpg/330px-Blood_Falls_by_Peter_Rejcek.jpg",
+      "source_region": "Antarctica",
+      "identified_country": "Antarctica",
+      "country_confidence": 0.3,
+      "categories": [
+        "Articles with short description",
+        "Coordinates on Wikidata",
+        "Geomicrobiology",
+        "Landforms of Victoria Land",
+        "McMurdo Dry Valleys",
+        "Pages using gadget WikiMiniAtlas",
+        "Short description matches Wikidata"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 7
+      }
+    },
+    {
+      "id": "mcmurdo_dry_valleys",
+      "title": "McMurdo Dry Valleys",
+      "description": "Snow-free valleys in Antarctica",
+      "extract": "The McMurdo Dry Valleys are a series of largely snow-free desert valleys on the continental coastline of Victoria Land, Antarctica, east of the East Antarctic Ice Sheet and west of McMurdo Sound and the Ross Sea. The Dry Valleys are notable for being the coldest and driest desert in the world, as we...",
+      "url": "https://en.wikipedia.org/wiki/McMurdo_Dry_Valleys",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mcmurdo_sound_USGS_map.jpg/330px-Mcmurdo_sound_USGS_map.jpg",
+      "source_region": "Antarctica",
+      "identified_country": "Antarctica",
+      "country_confidence": 1.0,
+      "categories": [
+        "All articles containing potentially dated statements",
+        "All articles with unsourced statements",
+        "Antarctic Specially Managed Areas",
+        "Articles containing potentially dated statements from August 2025",
+        "Articles with short description",
+        "Articles with unsourced statements from October 2024",
+        "Commons category link is on Wikidata",
+        "Coordinates on Wikidata",
+        "Landforms of Victoria Land",
+        "McMurdo Dry Valleys"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 18
+      }
+    }
+  ],
+  "United Kingdom": [
+    {
+      "id": "mawson_peak",
+      "title": "Mawson Peak",
+      "description": "Volcano on Heard Island",
+      "extract": "Mawson Peak is an active volcanic summit of the Big Ben massif on Heard Island, an external Australian territory in the Indian Ocean.",
+      "url": "https://en.wikipedia.org/wiki/Mawson_Peak",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/ISS018-E-038182_lrg.jpg/330px-ISS018-E-038182_lrg.jpg",
+      "source_region": "Antarctica",
+      "identified_country": "United Kingdom",
+      "country_confidence": 0.6,
+      "categories": [
+        "All Wikipedia articles written in Australian English",
+        "Articles with short description",
+        "Coordinates on Wikidata",
+        "Highest points of countries",
+        "Mountains of Australia",
+        "Pages using gadget WikiMiniAtlas",
+        "Short description matches Wikidata",
+        "Use Australian English from August 2019",
+        "Use dmy dates from February 2019",
+        "Volcanoes of Heard Island and McDonald Islands"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 10
+      }
+    },
+    {
+      "id": "argleton",
+      "title": "Argleton",
+      "description": "Phantom settlement formerly visible on Google Maps",
+      "extract": "Argleton was a phantom settlement that appeared on Google Maps and Google Earth but was later removed by Google. The supposed location of Argleton was between the A59 road and Town Green railway station within the civil parish of Aughton in West Lancashire, England, in an area of empty fields. Data ...",
+      "url": "https://en.wikipedia.org/wiki/Argleton",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/en/5/59/Argleton_-_Google_Maps_1257569106217.png",
+      "source_region": "Europe",
+      "identified_country": "United Kingdom",
+      "country_confidence": 0.76,
+      "categories": [
+        "All articles with unsourced statements",
+        "Articles with short description",
+        "Articles with unsourced statements from March 2024",
+        "Aughton, West Lancashire",
+        "Coordinates on Wikidata",
+        "Fictional populated places in England",
+        "Fictitious entries",
+        "Google Maps",
+        "Pages using gadget WikiMiniAtlas",
+        "Phantom geographical features"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 13
+      }
+    }
+  ],
+  "Hong Kong": [
+    {
+      "id": "kai_tak_airport",
+      "title": "Kai Tak Airport",
+      "description": "Former main airport in Hong Kong (1925–1998)",
+      "extract": "Kai Tak Airport was an international airport of Hong Kong from 1925 until 1998. Officially known as Hong Kong International Airport from 1954 to 6 July 1998, it is often referred to as Hong Kong International Airport, Kai Tak,and Kai Tak International Airport, to distinguish it from its successor, C...",
+      "url": "https://en.wikipedia.org/wiki/Kai_Tak_Airport",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Boeing_747-467%2C_Cathay_Pacific_Airways_JP10362.jpg/330px-Boeing_747-467%2C_Cathay_Pacific_Airways_JP10362.jpg",
+      "source_region": "Asia",
+      "identified_country": "Hong Kong",
+      "country_confidence": 1.0,
+      "categories": [
+        "1925 establishments in Hong Kong",
+        "1998 disestablishments in Hong Kong",
+        "Airports disestablished in 1998",
+        "Airports established in 1925",
+        "Airports in Hong Kong",
+        "All Wikipedia articles in need of updating",
+        "All Wikipedia articles written in Hong Kong English",
+        "All articles with dead external links",
+        "All articles with unsourced statements",
+        "Articles containing Chinese-language text"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 35
+      }
+    }
+  ],
+  "China": [
+    {
+      "id": "798_art_zone",
+      "title": "798 Art Zone",
+      "description": "Arts district in Dashanzi, Chaoyang district, Beijing, PRC",
+      "extract": "798 Art Zone, or Dashanzi Art District, is a complex of 50-year-old decommissioned military factory buildings boasting a unique architectural style that houses a thriving artistic community in Dashanzi, Chaoyang District, Beijing. The area is often called the 798 Art District or Factory 798 although...",
+      "url": "https://en.wikipedia.org/wiki/798_Art_Zone",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Beijing_798_Art_District.jpg/330px-Beijing_798_Art_District.jpg",
+      "source_region": "Asia",
+      "identified_country": "China",
+      "country_confidence": 1.0,
+      "categories": [
+        "All articles needing additional references",
+        "All articles with specifically marked weasel-worded phrases",
+        "All articles with vague or ambiguous time",
+        "Articles containing simplified Chinese-language text",
+        "Articles needing additional references from July 2018",
+        "Articles needing additional references from March 2022",
+        "Articles with short description",
+        "Articles with specifically marked weasel-worded phrases from January 2011",
+        "Arts districts",
+        "Arts in China"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 18
+      }
+    }
+  ],
+  "Japan": [
+    {
+      "id": "aoshima,_ehime",
+      "title": "Aoshima, Ehime",
+      "description": "Island in Ehime Prefecture, Japan",
+      "extract": "Aoshima , also known as Cat Island , is an island in Ehime Prefecture, Japan, known for its large number of feline residents and small number of people. Felines have been reported by news outlets to outnumber humans by ratios between 6:1 and 10:1, but as elderly inhabitants of the island have died, ...",
+      "url": "https://en.wikipedia.org/wiki/Aoshima%2C_Ehime",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Iyo-Aoshima_Island_Aerial_photograph.jpg/330px-Iyo-Aoshima_Island_Aerial_photograph.jpg",
+      "source_region": "Asia",
+      "identified_country": "Japan",
+      "country_confidence": 1.0,
+      "categories": [
+        "All articles containing potentially dated statements",
+        "All articles with unsourced statements",
+        "Articles containing Japanese-language text",
+        "Articles containing potentially dated statements from 2005",
+        "Articles to be expanded from January 2021",
+        "Articles with short description",
+        "Articles with unsourced statements from April 2015",
+        "Articles with unsourced statements from February 2018",
+        "CS1 Japanese-language sources (ja)",
+        "Car-free islands of Asia"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 19
+      }
+    },
+    {
+      "id": "tashirojima",
+      "title": "Tashirojima",
+      "description": "Island in Miyagi, Japan",
+      "extract": "Tashirojima  is a small island in Ishinomaki, Miyagi Prefecture, Japan. It lies in the Pacific Ocean off the Oshika Peninsula, to the north of Aji Island. The population was around 80 people in 2015, compared to around 1,000 in the 1950s. It has become known as \"Cat Island\" owing to its large stray ...",
+      "url": "https://en.wikipedia.org/wiki/Tashirojima",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Tashirojima_Island.JPG/330px-Tashirojima_Island.JPG",
+      "source_region": "Asia",
+      "identified_country": "Japan",
+      "country_confidence": 1.0,
+      "categories": [
+        "All articles needing additional references",
+        "All articles with specifically marked weasel-worded phrases",
+        "All articles with unsourced statements",
+        "Articles containing Japanese-language text",
+        "Articles needing additional references from November 2013",
+        "Articles with short description",
+        "Articles with specifically marked weasel-worded phrases from August 2018",
+        "Articles with unsourced statements from August 2013",
+        "Articles with unsourced statements from August 2018",
+        "CS1 Japanese-language sources (ja)"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 18
+      }
+    }
+  ],
+  "Armenia": [
+    {
+      "id": "artsvashen",
+      "title": "Artsvashen",
+      "description": "Place in Gegharkunik, Armenia",
+      "extract": "Artsvashen or Bashkend is a de jure Armenian village in the Chambarak Municipality of the Gegharkunik Province of Armenia. It is a 40 square kilometres (15 sq mi) exclave of Armenia, and is surrounded by the territory of Azerbaijan, which has de facto occupied it since the First Nagorno-Karabakh War...",
+      "url": "https://en.wikipedia.org/wiki/Artsvashen",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%91%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D0%B4_%D0%B2_%D0%90%D0%B7%D0%B5%D1%80%D0%B1%D0%B0%D0%B9%D0%B4%D0%B6%D0%B0%D0%BD%D0%B5.jpg/330px-%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%91%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D0%B4_%D0%B2_%D0%90%D0%B7%D0%B5%D1%80%D0%B1%D0%B0%D0%B9%D0%B4%D0%B6%D0%B0%D0%BD%D0%B5.jpg",
+      "source_region": "Asia",
+      "identified_country": "Armenia",
+      "country_confidence": 1.0,
+      "categories": [
+        "All Wikipedia articles needing words, phrases or quotes attributed",
+        "All accuracy disputes",
+        "All articles with bare URLs for citations",
+        "Articles containing Armenian-language text",
+        "Articles containing Azerbaijani-language text",
+        "Articles with bare URLs for citations from August 2025",
+        "Articles with disputed statements from February 2009",
+        "Articles with short description",
+        "CS1 Armenian-language sources (hy)",
+        "CS1 Russian-language sources (ru)"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 21
+      }
+    }
+  ],
+  "France": [
+    {
+      "id": "pablo_picasso",
+      "title": "Pablo Picasso",
+      "description": "Spanish painter and sculptor (1881–1973)",
+      "extract": "Pablo Diego José Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santísima Trinidad Ruiz y Picasso was a Spanish painter, sculptor, printmaker, ceramicist, and theatre designer who spent most of his adult life in France. One of the most influential artists of the 20th century...",
+      "url": "https://en.wikipedia.org/wiki/Pablo_Picasso",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pablo_picasso_1.jpg/330px-Pablo_picasso_1.jpg",
+      "source_region": "Europe",
+      "identified_country": "France",
+      "country_confidence": 1.0,
+      "categories": [
+        "1881 births",
+        "1973 deaths",
+        "19th-century Spanish male artists",
+        "19th-century Spanish painters",
+        "20th-century Spanish male artists",
+        "20th-century Spanish painters",
+        "20th-century Spanish sculptors",
+        "20th-century ceramists",
+        "All Wikipedia articles written in British English with Oxford spelling",
+        "All articles containing potentially dated statements"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 68
+      }
+    },
+    {
+      "id": "abode_of_chaos",
+      "title": "Abode of Chaos",
+      "description": "Museum in Saint-Romain-au-Mont-d'Or, France, created by Thierry Ehrmann",
+      "extract": "The Abode of Chaos is a contemporary art museum located in Saint-Romain-au-Mont-d'Or, a small town in the vicinity of Lyon, France, with over 2,500 works from many different artists, including the owner Thierry Ehrmann. Ehrmann is the founder and CEO of Groupe Serveur and Artprice.com, both of which...",
+      "url": "https://en.wikipedia.org/wiki/Abode_of_Chaos",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Photo_panoramique.jpg/330px-Photo_panoramique.jpg",
+      "source_region": "Europe",
+      "identified_country": "France",
+      "country_confidence": 1.0,
+      "categories": [
+        "All stub articles",
+        "Art museums and galleries in France",
+        "Articles containing French-language text",
+        "Articles with short description",
+        "CS1 French-language sources (fr)",
+        "Commons category link from Wikidata",
+        "Coordinates on Wikidata",
+        "European art museum and gallery stubs",
+        "French contemporary art",
+        "French museum stubs"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 13
+      }
+    }
+  ],
+  "Sweden": [
+    {
+      "id": "ängelholm_ufo_memorial",
+      "title": "Ängelholm UFO memorial",
+      "description": "Monument near Ängelholm, Sweden",
+      "extract": "The Ängelholm UFO memorial is a monument dedicated to an alleged UFO landing site in the Kronoskogen forest near Ängelholm, Sweden. It includes a concrete scale model of a flying saucer, the purportedly life-size landing impressions on the ground, and copper plaques mounted on pillars. The monument ...",
+      "url": "https://en.wikipedia.org/wiki/%C3%84ngelholm_UFO_memorial",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/UFO-monumentet_i_%C3%84ngelholm_1.jpg/330px-UFO-monumentet_i_%C3%84ngelholm_1.jpg",
+      "source_region": "Europe",
+      "identified_country": "Sweden",
+      "country_confidence": 1.0,
+      "categories": [
+        "1972 establishments in Sweden",
+        "20th-century establishments in Kristianstad County",
+        "All Wikipedia articles written in American English",
+        "Alleged extraterrestrial encounters",
+        "Articles containing Swedish-language text",
+        "Articles with short description",
+        "Buildings and structures in Skåne County",
+        "CS1 Swedish-language sources (sv)",
+        "Commons category link is on Wikidata",
+        "Coordinates on Wikidata"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 23
+      }
+    }
+  ],
+  "Brazil": [
+    {
+      "id": "americana,_são_paulo",
+      "title": "Americana, São Paulo",
+      "description": "Municipality in São Paulo, Southeast Brazil",
+      "extract": "Americana is a municipality (município) located in the Brazilian state of São Paulo. It is part of the Metropolitan Region of Campinas. The population is 237,240 in an area of 133.91 km2 (51.70 sq mi). The original settlement developed around the local railway station, founded in 1875, and the devel...",
+      "url": "https://en.wikipedia.org/wiki/Americana%2C_S%C3%A3o_Paulo",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Vista_a%C3%A9rea_de_Americana.jpg/330px-Vista_a%C3%A9rea_de_Americana.jpg",
+      "source_region": "Latin America and the Caribbean",
+      "identified_country": "Brazil",
+      "country_confidence": 1.0,
+      "categories": [
+        "1875 establishments in Brazil",
+        "American diaspora in South America",
+        "American expatriates in Brazil",
+        "Americana, São Paulo",
+        "Articles with Portuguese-language sources (pt)",
+        "Articles with short description",
+        "Brazilian people of American descent",
+        "CS1 Portuguese-language sources (pt)",
+        "Commons category link is on Wikidata",
+        "Confederate expatriates"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 18
+      }
+    },
+    {
+      "id": "cândido_godói",
+      "title": "Cândido Godói",
+      "description": "Municipality of Rio Grande do Sul, Brazil",
+      "extract": "Cândido Godói is a municipality of 6,151 inhabitants in the state of Rio Grande do Sul, Brazil near the Argentine border, famous for the high number of twins born there. The twin phenomenon is centered in Linha São Pedro, a small settlement in the city of Cândido Godói, in an ethnically homogeneous ...",
+      "url": "https://en.wikipedia.org/wiki/C%C3%A2ndido_God%C3%B3i",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Portico_Candido_Godoi.jpg/330px-Portico_Candido_Godoi.jpg",
+      "source_region": "Latin America and the Caribbean",
+      "identified_country": "Brazil",
+      "country_confidence": 0.7,
+      "categories": [
+        "Articles with short description",
+        "Brazilian people of German descent",
+        "Coordinates on Wikidata",
+        "Municipalities in Rio Grande do Sul",
+        "Pages using gadget WikiMiniAtlas",
+        "Pages using infobox settlement with possible motto list",
+        "Pages with Portuguese IPA",
+        "Populated places with highest incidence of multiple birth",
+        "Short description is different from Wikidata",
+        "Twin"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 10
+      }
+    }
+  ],
+  "Mexico": [
+    {
+      "id": "cancún_underwater_museum",
+      "title": "Cancún Underwater Museum",
+      "description": "Underwater display of sculpture in Cancún, Mexico",
+      "extract": "The Cancún Underwater Museum is a non-profit organization based in Cancún, Mexico devoted to the art of conservation. The museum has a total of 500 sculptures, by a series of international and local sculptors, with three different galleries submerged between three and six meters deep in the ocean at...",
+      "url": "https://en.wikipedia.org/wiki/Canc%C3%BAn_Underwater_Museum",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/DSCN0626_%2814108251890%29.jpg/330px-DSCN0626_%2814108251890%29.jpg",
+      "source_region": "Latin America and the Caribbean",
+      "identified_country": "Mexico",
+      "country_confidence": 1.0,
+      "categories": [
+        "2010 establishments in Mexico",
+        "Art museums and galleries established in 2010",
+        "Art museums and galleries in Mexico",
+        "Articles containing Spanish-language text",
+        "Articles with short description",
+        "Commons category link from Wikidata",
+        "Museums in Quintana Roo",
+        "Pages using gadget WikiMiniAtlas",
+        "Short description is different from Wikidata",
+        "Underwater sculpture"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 10
+      }
+    }
+  ],
+  "United States": [
+    {
+      "id": "norfolk_southern–gregson_street_overpass",
+      "title": "Norfolk Southern–Gregson Street Overpass",
+      "description": "Low bridge in North Carolina, US",
+      "extract": "The Norfolk Southern–Gregson Street Overpass is a railroad bridge in Durham, North Carolina, United States. Built in 1940, the bridge carries passenger and freight trains over South Gregson Street in downtown Durham and functions as the northbound access to the nearby Durham Amtrak station.",
+      "url": "https://en.wikipedia.org/wiki/Norfolk_Southern%E2%80%93Gregson_Street_Overpass",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Durham--Gregson_Street_Guillotine_01.jpg/330px-Durham--Gregson_Street_Guillotine_01.jpg",
+      "source_region": "North America",
+      "identified_country": "United States",
+      "country_confidence": 1.0,
+      "categories": [
+        "All Wikipedia articles written in American English",
+        "All articles containing potentially dated statements",
+        "All articles with unsourced statements",
+        "Articles containing Danish-language text",
+        "Articles containing French-language text",
+        "Articles containing Hebrew-language text",
+        "Articles containing Spanish-language text",
+        "Articles containing potentially dated statements from October 2019",
+        "Articles with short description",
+        "Articles with unsourced statements from November 2024"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 33
+      }
+    },
+    {
+      "id": "33_thomas_street",
+      "title": "33 Thomas Street",
+      "description": "Skyscraper in Manhattan, New York",
+      "extract": "33 Thomas Street is a 550-foot-tall (170 m) windowless skyscraper in the Tribeca neighborhood of Lower Manhattan in New York City, New York, United States. It stands on the east side of Church Street, between Thomas Street and Worth Street.",
+      "url": "https://en.wikipedia.org/wiki/33_Thomas_Street",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/33_thomas_st.jpg/330px-33_thomas_st.jpg",
+      "source_region": "North America",
+      "identified_country": "United States",
+      "country_confidence": 1.0,
+      "categories": [
+        "1974 establishments in New York City",
+        "AT&T buildings",
+        "All Wikipedia articles written in American English",
+        "Articles with hAudio microformats",
+        "Articles with short description",
+        "Brutalist architecture in New York City",
+        "Buildings and structures completed in 1974",
+        "CS1: unfit URL",
+        "Coordinates on Wikidata",
+        "Infobox mapframe without OSM relation ID on Wikidata"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 21
+      }
+    },
+    {
+      "id": "sentinel_peak_(arizona)",
+      "title": "Sentinel Peak (Arizona)",
+      "description": "Mountain in Arizona, United States",
+      "extract": "Sentinel Peak is a 2,897 ft (900 m) peak in the Tucson Mountains southwest of downtown Tucson, Arizona, United States. The valley's first inhabitants grew crops at the mountain's base, along the Santa Cruz River. The name \"Tucson\" is derived from the O'odham Cuk Ṣon, meaning \"the base [of the mounta...",
+      "url": "https://en.wikipedia.org/wiki/Sentinel_Peak_(Arizona)",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Sentinel_Peak_%28Arizona%29.jpg/330px-Sentinel_Peak_%28Arizona%29.jpg",
+      "source_region": "North America",
+      "identified_country": "United States",
+      "country_confidence": 1.0,
+      "categories": [
+        "All Wikipedia articles written in American English",
+        "All articles needing additional references",
+        "All articles with unsourced statements",
+        "Articles containing O'odham-language text",
+        "Articles needing additional references from August 2015",
+        "Articles with short description",
+        "Articles with unsourced statements from September 2016",
+        "CS1: long volume value",
+        "Commons category link is on Wikidata",
+        "Coordinates on Wikidata"
+      ],
+      "location_signals": {
+        "has_geographic_categories": true,
+        "category_count": 23
+      }
+    },
+    {
+      "id": "tucson,_arizona",
+      "title": "Tucson, Arizona",
+      "description": "City in Arizona, United States",
+      "extract": "Tucson is a city in Pima County, Arizona, United States, its most populated city and its county seat. It is the second-most populous city in Arizona with a population of 542,630 at the 2020 census behind only Phoenix, while the Tucson metropolitan statistical area has an estimated 1.08 million resid...",
+      "url": "https://en.wikipedia.org/wiki/Tucson%2C_Arizona",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/View_of_Tucson_from_Sentinel_Peak_2.jpg/330px-View_of_Tucson_from_Sentinel_Peak_2.jpg",
+      "source_region": "North America",
+      "identified_country": "United States",
+      "country_confidence": 1.0,
+      "categories": [
+        "1775 establishments in New Spain",
+        "All Wikipedia articles written in American English",
+        "All articles with unsourced statements",
+        "Arizona placenames of Native American origin",
+        "Articles containing O'odham-language text",
+        "Articles containing Spanish-language text",
+        "Articles with short description",
+        "Articles with unsourced statements from August 2023",
+        "Articles with unsourced statements from December 2024",
+        "Articles with unsourced statements from May 2017"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 44
+      }
+    },
+    {
+      "id": "agloe,_new_york",
+      "title": "Agloe, New York",
+      "description": "Fictional place in New York state, USA",
+      "extract": "Agloe was originally a fictional hamlet in Colchester, Delaware County, New York, United States, that became an actual landmark after mapmakers made up the community as a phantom settlement, an example of a fictitious entry similar to a trap street, added to the map to catch plagiarism.",
+      "url": "https://en.wikipedia.org/wiki/Agloe%2C_New_York",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/en/4/40/FictionalAgloeNewYork.PNG",
+      "source_region": "North America",
+      "identified_country": "United States",
+      "country_confidence": 0.96,
+      "categories": [
+        "All articles needing additional references",
+        "All articles with unsourced statements",
+        "Articles needing additional references from April 2021",
+        "Articles with short description",
+        "Articles with unsourced statements from January 2025",
+        "Catskills",
+        "Coordinates on Wikidata",
+        "Fictional elements introduced in the 1930s",
+        "Fictional populated places in New York (state)",
+        "Fictitious entries"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 14
+      }
+    }
+  ],
+  "Samoa": [
+    {
+      "id": "american_samoa",
+      "title": "American Samoa",
+      "description": "U.S. territory in Polynesia",
+      "extract": "American Samoa is an unincorporated and unorganized territory of the United States located in the Polynesia region of the south Pacific Ocean. Centered on 14.3°S 170.7°W, it is 40 miles (64 km) southeast of the island country of Samoa, east of the International Date Line and the Wallis and Futuna Is...",
+      "url": "https://en.wikipedia.org/wiki/American_Samoa",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Flag_of_American_Samoa.svg/330px-Flag_of_American_Samoa.svg.png",
+      "source_region": "Oceania",
+      "identified_country": "Samoa",
+      "country_confidence": 1.0,
+      "categories": [
+        "1899 establishments in Oceania",
+        "All Wikipedia articles in need of updating",
+        "All Wikipedia articles written in American English",
+        "All articles containing potentially dated statements",
+        "All articles with unsourced statements",
+        "American Samoa",
+        "Archipelagoes of the United States",
+        "Articles containing Samoan-language text",
+        "Articles containing explicitly cited English-language text",
+        "Articles containing potentially dated statements from 2010"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 37
+      }
+    },
+    {
+      "id": "american_samoa_fono",
+      "title": "American Samoa Fono",
+      "description": "Territorial legislature of American Samoa",
+      "extract": "The  American Samoa Fono is the territorial legislature of American Samoa. Like most states and territorial legislatures of the United States, it is a bicameral legislature with a House of Representatives and a Senate. The legislature is located in Fagatogo along Pago Pago harbor.",
+      "url": "https://en.wikipedia.org/wiki/American_Samoa_Fono",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Seal_of_American_Samoa.svg/330px-Seal_of_American_Samoa.svg.png",
+      "source_region": "Oceania",
+      "identified_country": "Samoa",
+      "country_confidence": 1.0,
+      "categories": [
+        "American Samoa Fono",
+        "Articles with short description",
+        "Bicameral legislatures",
+        "Coordinates on Wikidata",
+        "Pages using gadget WikiMiniAtlas",
+        "Pago Pago",
+        "Short description matches Wikidata",
+        "Territorial legislatures of the United States",
+        "Tutuila"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 9
+      }
+    }
+  ],
+  "New Zealand": [
+    {
+      "id": "baldwin_street",
+      "title": "Baldwin Street",
+      "description": "Steepest street in the world",
+      "extract": "Baldwin Street, in Dunedin, New Zealand, is located in the residential suburb of North East Valley, 3.5 kilometres (2.2 mi) northeast of Dunedin's central business district. Guinness World Records calls it the steepest street in the world, meaning no street gains more altitude in 10 horizontal metre...",
+      "url": "https://en.wikipedia.org/wiki/Baldwin_Street",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Baldwinstreet.jpg/330px-Baldwinstreet.jpg",
+      "source_region": "Oceania",
+      "identified_country": "New Zealand",
+      "country_confidence": 1.0,
+      "categories": [
+        "All Wikipedia articles written in New Zealand English",
+        "All articles needing additional references",
+        "All articles with unsourced statements",
+        "Articles needing additional references from April 2024",
+        "Articles with short description",
+        "Articles with unsourced statements from April 2024",
+        "Commons category link from Wikidata",
+        "Coordinates on Wikidata",
+        "Pages using gadget WikiMiniAtlas",
+        "Pages using the Kartographer extension"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 15
+      }
+    },
+    {
+      "id": "dunedin",
+      "title": "Dunedin",
+      "description": "City in Otago, New Zealand",
+      "extract": "Dunedin is the second-most populous city in the South Island of New Zealand, and the principal city of the Otago region. Its name comes from Dùn Èideann, the Scottish Gaelic name for Edinburgh, the capital of Scotland. The city has a rich Māori, Scottish, and Chinese heritage.",
+      "url": "https://en.wikipedia.org/wiki/Dunedin",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Dunedin-Nueva_Zelanda01.JPG/330px-Dunedin-Nueva_Zelanda01.JPG",
+      "source_region": "Oceania",
+      "identified_country": "New Zealand",
+      "country_confidence": 1.0,
+      "categories": [
+        "1848 establishments in New Zealand",
+        "All Wikipedia articles written in New Zealand English",
+        "All articles lacking reliable references",
+        "All articles needing additional references",
+        "All articles with unsourced statements",
+        "Articles containing Latin-language text",
+        "Articles containing Māori-language text",
+        "Articles containing Scottish Gaelic-language text",
+        "Articles lacking reliable references from April 2021",
+        "Articles needing additional references from July 2017"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 38
+      }
+    }
+  ],
+  "Australia": [
+    {
+      "id": "ball's_pyramid",
+      "title": "Ball's Pyramid",
+      "description": "Island in the Pacific Ocean",
+      "extract": "Ball's Pyramid is an uninhabited islet in the Pacific Ocean located 20 kilometres southeast of Lord Howe Island, between Australia and New Zealand. The steep rocky basalt outcrop is the eroded plug of a shield volcano and caldera that formed 6.4 million years ago. It is 572 metres (1,877 ft) high, w...",
+      "url": "https://en.wikipedia.org/wiki/Ball's_Pyramid",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Balls_Pyramid_near_Lord_Howe_Island.jpg/330px-Balls_Pyramid_near_Lord_Howe_Island.jpg",
+      "source_region": "Oceania",
+      "identified_country": "Australia",
+      "country_confidence": 1.0,
+      "categories": [
+        "All Wikipedia articles written in Australian English",
+        "Articles with short description",
+        "CS1 maint: bot: original URL status unknown",
+        "Commons category link from Wikidata",
+        "Coordinates on Wikidata",
+        "Hotspot volcanoes",
+        "Islands of New South Wales",
+        "Miocene shield volcanoes",
+        "Pages using gadget WikiMiniAtlas",
+        "Polygenetic shield volcanoes"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 22
+      }
+    }
+  ],
+  "Unidentified": [
+    {
+      "id": "cryptocurrency",
+      "title": "Cryptocurrency",
+      "description": "Digital currency not reliant on a central authority",
+      "extract": "A cryptocurrency is a digital currency designed to work through a computer network that is not reliant on any central authority, such as a government or bank, to uphold or maintain it. However, a type of cryptocurrency called a stablecoin may rely upon government action or legislation to require tha...",
+      "url": "https://en.wikipedia.org/wiki/Cryptocurrency",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/320px-Bitcoin.svg.png",
+      "source_region": "Africa",
+      "identified_country": null,
+      "country_confidence": 0.0,
+      "categories": [
+        "All articles containing potentially dated statements",
+        "All articles lacking reliable references",
+        "All articles with unsourced statements",
+        "Applications of cryptography",
+        "Articles containing potentially dated statements from February 2018",
+        "Articles lacking reliable references from November 2019",
+        "Articles with short description",
+        "Articles with unsourced statements from August 2024",
+        "Articles with unsourced statements from January 2022",
+        "Articles with unsourced statements from November 2019"
+      ],
+      "location_signals": {
+        "has_geographic_categories": true,
+        "category_count": 23
+      }
+    },
+    {
+      "id": "iron_oxide",
+      "title": "Iron oxide",
+      "description": "Class of chemical compounds composed of iron and oxygen",
+      "extract": "An iron oxide is a chemical compound composed of iron and oxygen. Several iron oxides are recognized. Often they are non-stoichiometric. Ferric oxyhydroxides are a related class of compounds, perhaps the best known of which is rust.",
+      "url": "https://en.wikipedia.org/wiki/Iron_oxide",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Almindeligt_rust_-_jernoxid.jpg/330px-Almindeligt_rust_-_jernoxid.jpg",
+      "source_region": "Antarctica",
+      "identified_country": null,
+      "country_confidence": 0.0,
+      "categories": [
+        "Articles with short description",
+        "CS1 maint: article number as page number",
+        "Commons category link is on Wikidata",
+        "Iron compounds",
+        "Iron oxide pigments",
+        "Short description matches Wikidata",
+        "Transition metal oxides"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 7
+      }
+    },
+    {
+      "id": "ufo",
+      "title": "Unidentified flying object",
+      "description": "Airborne entity that has not been identified or explained",
+      "extract": "An unidentified flying object (UFO) is an object or phenomenon seen in the sky but not yet identified or explained. The term was coined when United States Air Force (USAF) investigations into flying saucers found too broad a range of shapes reported to consider them all saucers or discs. UFOs are al...",
+      "url": "https://en.wikipedia.org/wiki/Unidentified_flying_object",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Gimbal_The_First_Official_UAP_Footage_from_the_USG_for_Public_Release.webm/320px--Gimbal_The_First_Official_UAP_Footage_from_the_USG_for_Public_Release.webm.jpg",
+      "source_region": "Europe",
+      "identified_country": null,
+      "country_confidence": 0.0,
+      "categories": [
+        "Printworthy redirects",
+        "Redirects from initialisms",
+        "Redirects from merges",
+        "Redirects from moves",
+        "Redirects mentioned in hatnotes"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 5
+      }
+    }
+  ]
+}
