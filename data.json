@@ -166,33 +166,6 @@
   ],
   "United Kingdom": [
     {
-      "id": "mawson_peak",
-      "title": "Mawson Peak",
-      "description": "Volcano on Heard Island",
-      "extract": "Mawson Peak is an active volcanic summit of the Big Ben massif on Heard Island, an external Australian territory in the Indian Ocean.",
-      "url": "https://en.wikipedia.org/wiki/Mawson_Peak",
-      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/ISS018-E-038182_lrg.jpg/330px-ISS018-E-038182_lrg.jpg",
-      "source_region": "Antarctica",
-      "identified_country": "United Kingdom",
-      "country_confidence": 0.6,
-      "categories": [
-        "All Wikipedia articles written in Australian English",
-        "Articles with short description",
-        "Coordinates on Wikidata",
-        "Highest points of countries",
-        "Mountains of Australia",
-        "Pages using gadget WikiMiniAtlas",
-        "Short description matches Wikidata",
-        "Use Australian English from August 2019",
-        "Use dmy dates from February 2019",
-        "Volcanoes of Heard Island and McDonald Islands"
-      ],
-      "location_signals": {
-        "has_geographic_categories": false,
-        "category_count": 10
-      }
-    },
-    {
       "id": "argleton",
       "title": "Argleton",
       "description": "Phantom settlement formerly visible on Google Maps",
@@ -782,6 +755,33 @@
     }
   ],
   "Australia": [
+    {
+      "id": "mawson_peak",
+      "title": "Mawson Peak",
+      "description": "Volcano on Heard Island",
+      "extract": "Mawson Peak is an active volcanic summit of the Big Ben massif on Heard Island, an external Australian territory in the Indian Ocean.",
+      "url": "https://en.wikipedia.org/wiki/Mawson_Peak",
+      "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/ISS018-E-038182_lrg.jpg/330px-ISS018-E-038182_lrg.jpg",
+      "source_region": "Antarctica",
+      "identified_country": "United Kingdom",
+      "country_confidence": 0.6,
+      "categories": [
+        "All Wikipedia articles written in Australian English",
+        "Articles with short description",
+        "Coordinates on Wikidata",
+        "Highest points of countries",
+        "Mountains of Australia",
+        "Pages using gadget WikiMiniAtlas",
+        "Short description matches Wikidata",
+        "Use Australian English from August 2019",
+        "Use dmy dates from February 2019",
+        "Volcanoes of Heard Island and McDonald Islands"
+      ],
+      "location_signals": {
+        "has_geographic_categories": false,
+        "category_count": 10
+      }
+    },
     {
       "id": "ball's_pyramid",
       "title": "Ball's Pyramid",

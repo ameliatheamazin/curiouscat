@@ -152,7 +152,7 @@
             color: white;
         }
 
-        /* Dynamic Mode Toggle */
+        /* Description Refresh Toggle */
         .toggle-container {
             margin-bottom: 15px;
             display: flex;
@@ -214,7 +214,7 @@
             75% { transform: rotate(-2deg); }
         }
 
-        /* Paw Print Trail */
+        /* Cat Footprint Trails */
         .paw-prints {
             position: absolute;
             pointer-events: none;
@@ -227,6 +227,27 @@
         @keyframes pawFade {
             0% { opacity: 1; transform: scale(1.2); }
             100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        /* Cat Footprint Map Markers */
+        .footprint-marker {
+            background: none !important;
+            border: none !important;
+            font-size: 1.8rem;
+            text-align: center;
+            animation: footprintGlow 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footprint-marker:hover {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 15px rgba(255, 154, 86, 0.8));
+        }
+
+        @keyframes footprintGlow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         /* Enhanced Map Container with Cat Elements */
@@ -252,7 +273,7 @@
         }
         
         .sidebar {
-            width: 350px;
+            width: 380px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -355,8 +376,8 @@
             line-height: 1.5;
         }
 
-        /* Dynamic data indicators */
-        .dynamic-indicator {
+        /* Enhanced data indicators */
+        .curiosity-indicator {
             display: inline-flex;
             align-items: center;
             gap: 4px;
@@ -367,26 +388,50 @@
             margin: 4px 2px;
         }
 
-        .popularity-hot { background: #ff4757; color: white; }
-        .popularity-popular { background: #ff6b35; color: white; }
-        .popularity-moderate { background: #ffa502; color: white; }
-        .popularity-niche { background: #747d8c; color: white; }
-        .popularity-unknown { background: #ddd; color: #666; }
+        .curiosity-very-high { background: #ff4757; color: white; }
+        .curiosity-high { background: #ff6b35; color: white; }
+        .curiosity-medium { background: #ffa502; color: white; }
+        .curiosity-low { background: #747d8c; color: white; }
 
-        .views-indicator {
-            background: #00a8ff;
-            color: white;
+        /* Thumbnail hover overlay */
+        .thumbnail-overlay {
+            position: fixed;
+            z-index: 10000;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            border: 3px solid #ff9a56;
+            overflow: hidden;
         }
 
-        .trending-indicator {
-            background: #9c88ff;
-            color: white;
-            animation: pulse 2s ease-in-out infinite;
+        .thumbnail-overlay img {
+            display: block;
+            border-radius: 10px;
+            max-width: 100%;   
+            height: auto;      
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .thumbnail-overlay.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .thumbnail-overlay .loading-thumbnail {
+            width: 280px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 154, 86, 0.1), rgba(255, 173, 86, 0.1));
+            border-radius: 10px;
+            color: rgba(255, 154, 86, 0.6);
+            font-size: 2rem;
+        }
         }
         
         .article-list {
@@ -453,12 +498,19 @@
             opacity: 1;
             transform: scale(1.2) rotate(15deg);
         }
+
+        /* Article thumbnail styling - removed since thumbnails are now on hover */
+        .article-content {
+            flex: 1;
+            min-width: 0;
+        }
         
         .article-title {
             color: #333;
             font-weight: 600;
             margin-bottom: 8px;
             font-size: 1rem;
+            line-height: 1.2;
         }
         
         .article-description {
@@ -466,13 +518,6 @@
             font-size: 0.85rem;
             line-height: 1.4;
             margin-bottom: 8px;
-        }
-        
-        .article-extract {
-            color: #888;
-            font-size: 0.8rem;
-            line-height: 1.3;
-            margin-bottom: 10px;
         }
 
         .article-meta {
@@ -681,7 +726,7 @@
         }
         
         .popup-content {
-            max-width: 250px;
+            max-width: 280px;
         }
         
         .popup-title {
@@ -732,6 +777,11 @@
                 margin: 20px;
                 width: calc(100% - 40px);
             }
+
+            .thumbnail-overlay {
+                max-width: 250px;
+                max-height: 150px;
+            }
         }
     </style>
 </head>
@@ -752,12 +802,12 @@
             </div>
             <div class="sidebar-content">
                 <div class="toggle-container">
-                    <label>Static Mode</label>
+                    <label>Static</label>
                     <label class="toggle">
-                        <input type="checkbox" id="dynamic-toggle" checked>
+                        <input type="checkbox" id="refresh-toggle">
                         <span class="slider"></span>
                     </label>
-                    <label>Live Data</label>
+                    <label>Fresh Descriptions</label>
                 </div>
                 
                 <div id="sidebar-body">
@@ -776,7 +826,7 @@
         <div class="map-container">
             <div class="floating-controls">
                 <button class="cat-btn pounce-btn" id="pounceBtn" title="Let me pounce on something random!">
-                    🦘 Pounce!
+                    🐾 Pounce!
                 </button>
                 <button class="cat-btn prowl-btn" id="prowlBtn" title="Prowl for today's weird find">
                     🌙 Night Prowl
@@ -816,6 +866,11 @@
                 </button>
             </div>
         </div>
+        
+        <!-- Thumbnail hover overlay -->
+        <div class="thumbnail-overlay" id="thumbnailOverlay">
+            <div class="loading-thumbnail">📸</div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -844,7 +899,26 @@
             "Argentina": [-38.4161, -63.6167],
             "New Zealand": [-40.9006, 174.8860],
             "Singapore": [1.3521, 103.8198],
-            "Malaysia": [4.2105, 101.9758]
+            "Malaysia": [4.2105, 101.9758],
+            "Philippines": [12.8797, 121.7740],
+            "Taiwan": [23.6978, 120.9605],
+            "Vietnam": [14.0583, 108.2772],
+            "Turkey": [38.9637, 35.2433],
+            "Italy": [41.8719, 12.5674],
+            "Spain": [40.4637, -3.7492],
+            "Russia": [61.5240, 105.3188],
+            "Poland": [51.9194, 19.1451],
+            "Belgium": [50.5039, 4.4699],
+            "Greece": [39.0742, 21.8243],
+            "Portugal": [39.3999, -8.2245],
+            "Israel": [31.0461, 34.8516],
+            "Chile": [-35.6751, -71.5430],
+            "Peru": [-9.1900, -75.0152],
+            "Colombia": [4.5709, -74.2973],
+            "Morocco": [31.7917, -7.0926],
+            "Kenya": [-0.0236, 37.9062],
+            "Nigeria": [9.0820, 8.6753],
+            "Ukraine": [48.3794, 31.1656]
         };
 
         // Cat thoughts and reactions
@@ -869,7 +943,7 @@
 
         const loadingThoughts = [
             "Pawing through the data... 🐾",
-            "Hunting for weird articles... 🏹",
+            "Hunting for weird articles... 🐹",
             "My whiskers are working overtime! ⚡",
             "Sniffing out the good stuff... 👃",
             "Almost caught something interesting! 🎣"
@@ -879,6 +953,7 @@
             constructor() {
                 this.map = null;
                 this.markers = [];
+                this.footprints = new Set(); // Track visited countries
                 this.currentCountry = null;
                 this.data = {};
                 this.hoveredMarker = null;
@@ -886,6 +961,8 @@
                 this.pawPrints = [];
                 this.apiBase = 'http://localhost:5000/api';
                 this.availableCountries = [];
+                this.thumbnailCache = new Map(); // Cache for thumbnails
+                this.currentHoverTimeout = null;
                 this.init();
             }
 
@@ -913,7 +990,7 @@
                     const stats = await statsResponse.json();
                     const countriesData = await countriesResponse.json();
                     
-                    this.availableCountries = countriesData.countries;
+                    this.availableCountries = countriesData.countries.map(c => c.country);
                     this.updateStats(stats);
                     this.loadMarkers();
                     this.showWelcomeMessage();
@@ -933,9 +1010,99 @@
                     <div class="error-message">
                         <h4>🐱 Connection Error!</h4>
                         <p>${message}</p>
-                        <p><small>Try running: <code>python hybrid_backend.py</code></small></p>
+                        <p><small>Try running: <code>python curio-hybrid-backend.py</code></small></p>
                     </div>
                 `;
+            }
+
+            async fetchThumbnail(articleTitle) {
+                // Check cache first
+                if (this.thumbnailCache.has(articleTitle)) {
+                    return this.thumbnailCache.get(articleTitle);
+                }
+
+                try {
+                    // Clean title for Wikipedia API
+                    const cleanTitle = articleTitle.replace(/\s+/g, '_');
+                    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanTitle)}`;
+                    
+                    const response = await fetch(url, {
+                        headers: {
+                            'User-Agent': 'CurioCatExplorer/1.0 (https://github.com/your-repo; your-email@example.com)'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        const thumbnailUrl = data.thumbnail?.source || null;
+                        
+                        // Cache the result (even if null)
+                        this.thumbnailCache.set(articleTitle, thumbnailUrl);
+                        return thumbnailUrl;
+                    }
+                } catch (error) {
+                    console.error('Error fetching thumbnail:', error);
+                }
+                
+                // Cache null result to avoid repeated failed requests
+                this.thumbnailCache.set(articleTitle, null);
+                return null;
+            }
+
+            showThumbnailOverlay(articleTitle, x, y) {
+                const overlay = document.getElementById('thumbnailOverlay');
+                
+                // Position the overlay
+                overlay.style.left = Math.min(x + 20, window.innerWidth - overlay.offsetWidth - 20) + 'px';
+                overlay.style.top = Math.min(y - 80, window.innerHeight - overlay.offsetHeight - 20) + 'px';
+                
+                // Show loading state
+                overlay.innerHTML = '<div class="loading-thumbnail">📸</div>';
+                overlay.classList.add('show');
+                
+                // Fetch thumbnail
+                this.fetchThumbnail(articleTitle).then(thumbnailUrl => {
+                if (thumbnailUrl && overlay.classList.contains('show')) {
+                    const img = new Image();
+                    img.src = thumbnailUrl;
+
+                    img.onload = () => {
+                        const padding = 20;
+                        const maxWidth = window.innerWidth - padding * 2;
+                        const maxHeight = window.innerHeight - padding * 2;
+
+                        // Natural dimensions
+                        let w = img.naturalWidth;
+                        let h = img.naturalHeight;
+
+                        // Scale down if too big for viewport
+                        if (w > maxWidth) {
+                            h = h * (maxWidth / w);
+                            w = maxWidth;
+                        }
+                        if (h > maxHeight) {
+                            w = w * (maxHeight / h);
+                            h = maxHeight;
+                        }
+
+                        overlay.style.width = w + "px";
+                        overlay.style.height = h + "px";
+                        overlay.innerHTML = "";
+                        overlay.appendChild(img);
+                    };
+                } else if (overlay.classList.contains('show')) {
+                    // Fallback placeholder
+                    const placeholders = ['🖼️', '🗺️', '📸', '🎭', '🏛️', '🌍'];
+                    const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+                    overlay.innerHTML = `<div class="loading-thumbnail">${randomPlaceholder}</div>`;
+                }
+            });
+
+            }
+
+            hideThumbnailOverlay() {
+                const overlay = document.getElementById('thumbnailOverlay');
+                overlay.classList.remove('show');
             }
 
             startCatBehaviors() {
@@ -996,6 +1163,42 @@
                 }, 2000);
             }
 
+            addFootprintMarker(country, coords) {
+                // Create footprint marker for visited countries
+                const footprintIcon = L.divIcon({
+                    html: '<div class="footprint-marker">🐾</div>',
+                    iconSize: [25, 25],
+                    className: 'footprint-marker-container'
+                });
+
+                const marker = L.marker(coords, {
+                    icon: footprintIcon,
+                    title: `Visited: ${country}`
+                }).addTo(this.map);
+
+                marker.country = country;
+                marker.isFootprint = true;
+
+                // Add popup for footprint
+                marker.bindPopup(`
+                    <div class="popup-content">
+                        <div class="popup-title">🐾 ${country}</div>
+                        <div class="popup-description">
+                            I've explored this place! My paws remember the weird things here.
+                        </div>
+                        <button onclick="window.curioCat.loadCountryData('${country}')" 
+                                style="background: #ff9a56; color: white; border: none; padding: 5px 10px; border-radius: 10px; cursor: pointer; margin-top: 5px;">
+                            🐱 Revisit
+                        </button>
+                    </div>
+                `, {
+                    maxWidth: 200,
+                    className: 'curiomap-popup'
+                });
+
+                return marker;
+            }
+
             initMap() {
                 this.map = L.map('map', {
                     center: [20, 0],
@@ -1016,6 +1219,9 @@
                 this.map.on('click', (e) => {
                     this.createPawPrint(e.containerPoint.x, e.containerPoint.y);
                 });
+
+                // Make this available globally for popup buttons
+                window.curioCat = this;
             }
 
             initEventListeners() {
@@ -1063,11 +1269,11 @@
                     }
                 });
 
-                // Dynamic toggle
-                document.getElementById('dynamic-toggle').addEventListener('change', () => {
+                // Refresh toggle
+                document.getElementById('refresh-toggle').addEventListener('change', () => {
                     if (this.currentCountry) {
                         this.loadCountryData(this.currentCountry);
-                        this.showCatThought("Switching data modes... 🔄");
+                        this.showCatThought("Refreshing descriptions... 🔄");
                     }
                 });
             }
@@ -1162,7 +1368,15 @@
                 this.availableCountries.forEach(country => {
                     const coords = countryCoordinates[country];
                     if (coords) {
-                        this.addCountryMarker(country, coords);
+                        // Check if this country has been visited
+                        if (this.footprints.has(country)) {
+                            // Add footprint marker instead
+                            const footprintMarker = this.addFootprintMarker(country, coords);
+                            this.markers.push(footprintMarker);
+                        } else {
+                            // Add regular paw marker
+                            this.addCountryMarker(country, coords);
+                        }
                     }
                 });
             }
@@ -1222,12 +1436,18 @@
             async loadCountryData(country) {
                 try {
                     this.currentCountry = country;
-                    const isDynamic = document.getElementById('dynamic-toggle').checked;
+                    const refreshDescriptions = document.getElementById('refresh-toggle').checked;
                     
                     // Show loading state
                     this.showLoadingState(country);
                     
-                    const response = await fetch(`${this.apiBase}/country/${country}?dynamic=${isDynamic}`);
+                    // Build query params
+                    const params = new URLSearchParams({
+                        refresh: refreshDescriptions.toString(),
+                        limit: '20'
+                    });
+                    
+                    const response = await fetch(`${this.apiBase}/country/${encodeURIComponent(country)}?${params}`);
                     
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -1236,17 +1456,25 @@
                     const data = await response.json();
                     
                     if (data.articles && data.articles.length > 0) {
-                        this.updateSidebar(country, data.articles, isDynamic);
+                        // Mark country as visited
+                        this.footprints.add(country);
+                        
+                        this.updateSidebar(country, data.articles, refreshDescriptions);
                         
                         // Update marker popup with real data
-                        const marker = this.markers.find(m => m.country === country);
+                        const marker = this.markers.find(m => m.country === country && !m.isFootprint);
                         if (marker) {
-                            const popupContent = this.createPopupContent(country, data.articles, isDynamic);
+                            const popupContent = this.createPopupContent(country, data.articles, refreshDescriptions);
                             marker.bindPopup(popupContent, {
                                 maxWidth: 350,
                                 className: 'curiomap-popup'
                             });
                         }
+                        
+                        // Convert regular marker to footprint on next reload
+                        setTimeout(() => {
+                            this.loadMarkers();
+                        }, 500);
                     } else {
                         this.showNoArticles(country);
                     }
@@ -1282,29 +1510,23 @@
                 `;
             }
 
-            createPopupContent(country, articles, isDynamic) {
+            createPopupContent(country, articles, refreshDescriptions) {
                 const article = articles[0];
-                const totalViews = isDynamic && article.dynamic ? 
-                    `${article.dynamic.pageviews_30d.toLocaleString()} views` : '';
-                const popularity = isDynamic && article.dynamic ? 
-                    article.dynamic.popularity_tier : 'unknown';
+                const curiosityScore = article.curiosity_score || 5;
                 
                 return `
                     <div class="popup-content">
                         <div class="popup-title">🐾 ${country}</div>
                         <div class="popup-description">
                             ${articles.length} weird find${articles.length > 1 ? 's' : ''} 
-                            ${isDynamic && totalViews ? `• ${totalViews}` : ''}
+                            • Curiosity Score: ${curiosityScore}/10
                         </div>
                         <div style="margin-top: 10px;">
                             <strong>${article.title}</strong><br>
-                            <small>${article.description || article.extract?.substring(0, 100) + '...'}</small><br>
-                            ${isDynamic && article.dynamic ? 
-                                `<span class="dynamic-indicator popularity-${popularity}">
-                                    ${popularity.toUpperCase()}
-                                </span>` : 
-                                '<em style="color: #ff9a56;">Purrfect for exploration! 🐾</em>'
-                            }
+                            <small>${article.description || 'A mysterious Wikipedia discovery!'}</small><br>
+                            <span class="curiosity-indicator curiosity-${this.getCuriosityLevel(curiosityScore)}">
+                                ${this.getCuriosityLabel(curiosityScore)}
+                            </span>
                         </div>
                         <div style="margin-top: 8px;">
                             <a href="${article.url}" target="_blank" class="popup-link">
@@ -1315,41 +1537,51 @@
                 `;
             }
 
-            updateSidebar(country, articles, isDynamic) {
+            getCuriosityLevel(score) {
+                if (score >= 8) return 'very-high';
+                if (score >= 6) return 'high';
+                if (score >= 4) return 'medium';
+                return 'low';
+            }
+
+            getCuriosityLabel(score) {
+                if (score >= 8) return 'VERY WEIRD';
+                if (score >= 6) return 'WEIRD';
+                if (score >= 4) return 'CURIOUS';
+                return 'NORMAL';
+            }
+
+            getThumbnailElement(article) {
+                if (article.thumbnail && article.thumbnail.source) {
+                    return `<img src="${article.thumbnail.source}" alt="${article.title}" class="article-thumbnail" onerror="this.outerHTML='<div class=&quot;article-thumbnail placeholder&quot;>🖼️</div>'">`;
+                } else {
+                    // Use random cat-themed placeholder
+                    const placeholders = ['🖼️', '🗺️', '📸', '🎭', '🏛️', '🌍'];
+                    const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+                    return `<div class="article-thumbnail placeholder">${randomPlaceholder}</div>`;
+                }
+            }
+
+            updateSidebar(country, articles, refreshDescriptions) {
                 const sidebarBody = document.getElementById('sidebar-body');
                 
-                // Calculate stats for dynamic data
-                let avgViews = 0;
-                let totalTrending = 0;
-                
-                if (isDynamic) {
-                    const articlesWithViews = articles.filter(a => a.dynamic && a.dynamic.pageviews_30d);
-                    if (articlesWithViews.length > 0) {
-                        avgViews = Math.round(
-                            articlesWithViews.reduce((sum, a) => sum + a.dynamic.pageviews_30d, 0) / 
-                            articlesWithViews.length
-                        );
-                        totalTrending = articlesWithViews.reduce((sum, a) => sum + a.dynamic.trending_score, 0);
-                    }
-                }
+                // Calculate stats
+                const avgCuriosityScore = articles.reduce((sum, a) => sum + (a.curiosity_score || 5), 0) / articles.length;
                 
                 const content = `
                     <div class="country-info">
                         <h3>🐾 ${country}</h3>
                         <p>${articles.length} weird discover${articles.length > 1 ? 'ies' : 'y'} found!</p>
-                        ${isDynamic ? `
-                            <p><strong>Avg Views:</strong> ${avgViews.toLocaleString()}/month</p>
-                            <p><strong>Trending Score:</strong> ${(totalTrending/articles.length).toFixed(1)}x</p>
-                        ` : ''}
+                        <p><strong>Avg Curiosity:</strong> ${avgCuriosityScore.toFixed(1)}/10</p>
                     </div>
                     <div class="article-list">
-                        ${articles.map((article, index) => this.createArticleCard(article, index, isDynamic)).join('')}
+                        ${articles.map((article, index) => this.createArticleCard(article, index, refreshDescriptions)).join('')}
                     </div>
                 `;
                 
                 sidebarBody.innerHTML = content;
 
-                // Bind click events
+                // Bind click events and hover events for thumbnails
                 articles.forEach(article => {
                     const card = document.querySelector(`[data-article-id="${article.id}"]`);
                     if (card) {
@@ -1357,58 +1589,70 @@
                             window.open(article.url, '_blank');
                             this.showCatThought("Off to read more! Learning makes me purr! 📚");
                         });
+
+                        // Add hover events for thumbnail
+                        card.addEventListener('mouseenter', (e) => {
+                            if (this.currentHoverTimeout) {
+                                clearTimeout(this.currentHoverTimeout);
+                            }
+                            this.currentHoverTimeout = setTimeout(() => {
+                                this.showThumbnailOverlay(article.title, e.pageX, e.pageY);
+                            }, 500); // Delay to avoid showing on quick hovers
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            if (this.currentHoverTimeout) {
+                                clearTimeout(this.currentHoverTimeout);
+                                this.currentHoverTimeout = null;
+                            }
+                            this.hideThumbnailOverlay();
+                        });
+
+                        card.addEventListener('mousemove', (e) => {
+                            // Update overlay position while hovering
+                            const overlay = document.getElementById('thumbnailOverlay');
+                            if (overlay.classList.contains('show')) {
+                                overlay.style.left = Math.min(e.pageX + 20, window.innerWidth - 320) + 'px';
+                                overlay.style.top = Math.min(e.pageY - 80, window.innerHeight - 220) + 'px';
+                            }
+                        });
                     }
                 });
             }
 
-            createArticleCard(article, index, isDynamic) {
-                const dynamicData = isDynamic && article.dynamic ? article.dynamic : null;
+            createArticleCard(article, index, refreshDescriptions) {
+                const curiosityScore = article.curiosity_score || 5;
                 
                 return `
                     <div class="article-item" data-article-id="${article.id}" style="animation-delay: ${index * 0.1}s;">
-                        <div class="article-title">${article.title}</div>
-                        <div class="article-description">
-                            ${article.description || 'A mysterious Wikipedia discovery!'}
-                        </div>
-                        <div class="article-extract">
-                            ${(article.extract || '').substring(0, 130)}${(article.extract || '').length > 130 ? '...' : ''}
-                        </div>
-                        ${dynamicData ? `
-                            <div class="article-meta">
-                                <span class="dynamic-indicator views-indicator">
-                                    👀 ${dynamicData.pageviews_30d.toLocaleString()}
-                                </span>
-                                <span class="dynamic-indicator popularity-${dynamicData.popularity_tier}">
-                                    ${dynamicData.popularity_tier.toUpperCase()}
-                                </span>
-                                ${dynamicData.trending_score > 1.5 ? 
-                                    '<span class="dynamic-indicator trending-indicator">🔥 TRENDING</span>' : 
-                                    ''
-                                }
+                        <div class="article-content">
+                            <div class="article-title">${article.title}</div>
+                            <div class="article-description">
+                                ${article.description || 'A mysterious Wikipedia discovery!'}
                             </div>
-                        ` : `
                             <div class="article-meta">
-                                <span class="dynamic-indicator">
-                                    🐾 Purrfectly weird!
+                                <span class="curiosity-indicator curiosity-${this.getCuriosityLevel(curiosityScore)}">
+                                    ${this.getCuriosityLabel(curiosityScore)} (${curiosityScore}/10)
                                 </span>
                             </div>
-                        `}
-                        <a href="${article.url}" target="_blank" class="article-link" onclick="event.stopPropagation();">
-                            🐾 Pounce on Wikipedia →
-                        </a>
+                            <a href="${article.url}" target="_blank" class="article-link" onclick="event.stopPropagation();">
+                                🐾 Pounce on Wikipedia →
+                            </a>
+                        </div>
                     </div>
                 `;
             }
 
             updateStats(stats) {
                 const statsEl = document.getElementById('stats');
-                const lastUpdated = stats.last_updated ? 
+                const lastUpdated = stats.last_updated && stats.last_updated !== 'unknown' ? 
                     new Date(stats.last_updated).toLocaleDateString() : 
                     'unknown';
                 
                 statsEl.innerHTML = `
                     🌍 ${stats.total_countries} countries explored • 
                     📚 ${stats.total_articles} weird finds • 
+                    🎯 ${stats.identification_rate}% identified • 
                     📅 Updated: ${lastUpdated}
                 `;
             }
@@ -1435,6 +1679,11 @@
             .cat-marker:hover {
                 transform: scale(1.5) rotate(15deg);
                 filter: drop-shadow(0 0 15px rgba(255, 154, 86, 0.8));
+            }
+
+            .footprint-marker-container {
+                background: none !important;
+                border: none !important;
             }
         `;
         document.head.appendChild(style);
