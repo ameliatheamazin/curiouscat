@@ -5,8 +5,9 @@ Beyond being fun and quirky, this project is also a **data engineering exercise*
 
 ---
 <p align="center">
-  <img src="assets/demo.gif" alt="Demo gif" width="600"/>
+  <img src="./assets/demo.gif" alt="Demo GIF" width="600"/>
 </p>
+
 
 ## 📖 Project Walkthrough
 
@@ -62,26 +63,16 @@ It demonstrates the value of turning **raw, unstructured data** into an experien
 
 ---
 
-## 📊 Data Engineering Learnings
-
-- **Scraping APIs ≠ Clean Data**  
-  Wikipedia API often returns incomplete or inconsistent data (e.g., missing thumbnails or ambiguous country tags). Handling nulls and irregularities was critical.  
+## 🔑 Key Takeaways and Learnings
 
 - **Data Modeling Matters**  
   Defining a schema (title, description, URL, thumbnail, country, region) early kept the pipeline structured and easier to extend.  
 
-- **Enrichment Adds Value**  
-  Raw article lists were not engaging. By enriching with geography and media (thumbnails, regions), the dataset became far more interactive and useful.  
+- **CuriousCat shows how data engineering + visualization = storytelling.** 
+  It bridges geography with curiosity to provide a fun way to explore the world through unusual knowledge.    
 
-- **Iterative Development**  
-  Starting with static JSON enabled quick prototyping. Later iterations could connect to a database or add filters for scalability.  
+- **Direct Wikipedia integration**
+  Ensures accurate, up-to-date information.  
 
----
-
-## 🔑 Key Takeaways
-
-- **CuriousCat shows how data engineering + visualization = storytelling.** It bridges geography with curiosity to provide a fun way to explore the world through unusual knowledge.    
-- **Direct Wikipedia integration**: Ensures accurate, up-to-date information.  
-- **Expandable**: Future stretch goals include topic filters, user-submitted articles, and weird travel guides.  
 
 ---
