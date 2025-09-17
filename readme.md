@@ -4,9 +4,15 @@ CuriousCat is a lightweight web app that visualizes **unusual Wikipedia articles
 Beyond being fun and quirky, this project is also a **data engineering exercise** in scraping, enriching, and visualizing semi-structured data from public APIs.
 
 ---
+
+
+## View Demo!
+
 <p align="center">
-  <video src="demo/demo.mp4" width="600" autoplay loop muted></video>
+  <img src="assets/demo.png" alt="CuriousCat demo" width="600"/>
 </p>
+
+[![View Demo](https://img.shields.io/badge/VIEW-DEMO-blue?style=for-the-badge)](https://github.com/ameliatheamazin/curiouscat/blob/main/assets/demo.mp4?raw=true)
 
 
 
