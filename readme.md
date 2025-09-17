@@ -5,8 +5,9 @@ Beyond being fun and quirky, this project is also a **data engineering exercise*
 
 ---
 <p align="center">
-  ![CuriousCat Demo](https://github.com/ameliatheamazin/curiouscat/blob/main/assets/demo.gif?raw=true)
+  <video src="demo/demo.mp4" width="600" autoplay loop muted></video>
 </p>
+
 
 
 ## 📖 Project Walkthrough
