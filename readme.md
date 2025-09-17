@@ -5,7 +5,7 @@ Beyond being fun and quirky, this project is also a **data engineering exercise*
 
 ---
 <p align="center">
-  <img src="./assets/demo.gif" alt="Demo GIF" width="600"/>
+  ![CuriousCat Demo](https://github.com/ameliatheamazin/curiouscat/blob/main/assets/demo.gif?raw=true)
 </p>
 
 
